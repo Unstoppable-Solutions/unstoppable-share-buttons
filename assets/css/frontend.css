@@ -1,0 +1,899 @@
+/**
+ * Unstoppable Share Buttons - front end styles.
+ *
+ * Everything is driven by CSS custom properties so a single stylesheet can
+ * serve every shape, fill and colour combination without generating CSS
+ * per-site. The two that matter most:
+ *
+ *   --ushb-brand     the network's colour, set per button
+ *   --ushb-on-brand  the colour of the icon sitting on it
+ */
+
+.ushb {
+	--ushb-size: 42px;
+	--ushb-gap: 8px;
+	--ushb-radius: 10px;
+	--ushb-brand: #4a5568;
+	--ushb-on-brand: #ffffff;
+	--ushb-surface: #ffffff;
+	--ushb-ink: #1a202c;
+	--ushb-muted: #667085;
+	--ushb-line: rgba(16, 24, 40, 0.12);
+	--ushb-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+
+	display: block;
+	margin: 1.5em 0;
+	font-size: 15px;
+	line-height: 1.4;
+	color: var(--ushb-ink);
+}
+
+.ushb *,
+.ushb *::before,
+.ushb *::after {
+	box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------- layout */
+
+.ushb__buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--ushb-gap);
+	align-items: center;
+}
+
+.ushb--align-center .ushb__buttons,
+.ushb--align-center .ushb__heading,
+.ushb--align-center .ushb__cta {
+	justify-content: center;
+	text-align: center;
+}
+
+.ushb--align-right .ushb__buttons,
+.ushb--align-right .ushb__heading,
+.ushb--align-right .ushb__cta {
+	justify-content: flex-end;
+	text-align: right;
+}
+
+.ushb--full .ushb__buttons .ushb-btn {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.ushb__heading {
+	margin: 0 0 0.6em;
+	font-size: 0.95em;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+
+.ushb__cta {
+	margin: 0.6em 0 0;
+	font-size: 0.9em;
+	color: var(--ushb-muted);
+}
+
+.ushb--align-center .ushb__cta,
+.ushb--align-center .ushb__heading {
+	text-align: center;
+}
+
+.ushb__total {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 0 0 0.6em;
+	line-height: 1.1;
+}
+
+.ushb--align-center .ushb__total {
+	align-items: center;
+}
+
+.ushb--align-right .ushb__total {
+	align-items: flex-end;
+}
+
+.ushb__total strong {
+	font-size: 1.3em;
+	font-weight: 700;
+}
+
+.ushb__total span {
+	font-size: 0.75em;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--ushb-muted);
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.ushb-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55em;
+	min-width: var(--ushb-size);
+	height: var(--ushb-size);
+	padding: 0 calc(var(--ushb-size) * 0.28);
+	border: 0;
+	border-radius: var(--ushb-radius);
+	background: var(--ushb-brand);
+	color: var(--ushb-on-brand);
+	font: inherit;
+	font-size: calc(var(--ushb-size) * 0.33);
+	font-weight: 600;
+	line-height: 1;
+	text-decoration: none;
+	cursor: pointer;
+	transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease, filter 0.15s ease;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.ushb-btn:hover,
+.ushb-btn:focus {
+	color: var(--ushb-on-brand);
+	text-decoration: none;
+}
+
+.ushb-btn:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+}
+
+.ushb-btn__icon {
+	display: inline-flex;
+	flex: 0 0 auto;
+	width: calc(var(--ushb-size) * 0.45);
+	height: calc(var(--ushb-size) * 0.45);
+}
+
+.ushb-btn__icon .ushb-icon {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.ushb-btn__label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ushb-btn__count {
+	padding-left: 0.5em;
+	margin-left: 0.2em;
+	border-left: 1px solid rgba(255, 255, 255, 0.35);
+	font-variant-numeric: tabular-nums;
+	font-weight: 500;
+	opacity: 0.9;
+}
+
+/* Icon-only buttons are square, so drop the horizontal padding. */
+.ushb--labels-icon .ushb-btn {
+	width: var(--ushb-size);
+	padding: 0;
+}
+
+.ushb--labels-icon .ushb-btn__count {
+	display: none;
+}
+
+.ushb--labels-label .ushb-btn__icon {
+	display: none;
+}
+
+/* ---------------------------------------------------------------- shapes */
+
+.ushb--shape-square .ushb-btn {
+	border-radius: 0;
+}
+
+/*
+ * Pill and circle both use a fully rounded radius, so the width is what
+ * distinguishes them. A pill stays wider than it is tall; a circle is forced
+ * square. Without that, icon-only buttons make the two shapes identical.
+ */
+.ushb--shape-pill .ushb-btn {
+	border-radius: 999px;
+}
+
+/* Keep the stadium shape even when there is only an icon to show. */
+.ushb--shape-pill.ushb--labels-icon .ushb-btn {
+	width: auto;
+	padding: 0 calc(var(--ushb-size) * 0.55);
+}
+
+/* A circle is always square and never carries a label. */
+.ushb--shape-circle .ushb-btn {
+	width: var(--ushb-size);
+	padding: 0;
+	border-radius: 50%;
+}
+
+.ushb--shape-circle .ushb-btn__icon {
+	display: inline-flex;
+}
+
+.ushb--shape-circle .ushb-btn__label,
+.ushb--shape-circle .ushb-btn__count {
+	display: none;
+}
+
+.ushb--shape-ribbon .ushb-btn {
+	border-radius: 0;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+	height: calc(var(--ushb-size) * 1.2);
+	align-items: flex-start;
+	padding-top: calc(var(--ushb-size) * 0.24);
+}
+
+/*
+ * Drop is a circle with one squared corner, so like circle it only holds its
+ * shape when the button is square. With a label it stretched into an ellipse.
+ */
+.ushb--shape-drop .ushb-btn {
+	width: var(--ushb-size);
+	padding: 0;
+	border-radius: 50% 50% 50% 4px;
+}
+
+.ushb--shape-drop .ushb-btn__icon {
+	display: inline-flex;
+}
+
+.ushb--shape-drop .ushb-btn__label,
+.ushb--shape-drop .ushb-btn__count {
+	display: none;
+}
+
+/* ----------------------------------------------------------------- fills */
+
+.ushb--style-outline .ushb-btn {
+	background: transparent;
+	border: 2px solid var(--ushb-brand);
+	color: var(--ushb-brand);
+}
+
+.ushb--style-outline .ushb-btn:hover,
+.ushb--style-outline .ushb-btn:focus-visible {
+	background: var(--ushb-brand);
+	color: var(--ushb-on-brand);
+}
+
+.ushb--style-dashed .ushb-btn {
+	background: transparent;
+	border: 2px dashed var(--ushb-brand);
+	color: var(--ushb-brand);
+}
+
+.ushb--style-dashed .ushb-btn:hover {
+	border-style: solid;
+	background: var(--ushb-brand);
+	color: var(--ushb-on-brand);
+}
+
+.ushb--style-minimal .ushb-btn {
+	background: transparent;
+	color: var(--ushb-brand);
+	padding: 0 calc(var(--ushb-size) * 0.16);
+}
+
+.ushb--style-minimal .ushb-btn:hover {
+	background: color-mix(in srgb, var(--ushb-brand) 12%, transparent);
+}
+
+.ushb--style-glass .ushb-btn {
+	background: color-mix(in srgb, var(--ushb-brand) 16%, transparent);
+	color: var(--ushb-brand);
+	border: 1px solid color-mix(in srgb, var(--ushb-brand) 30%, transparent);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.ushb--style-glass .ushb-btn:hover {
+	background: color-mix(in srgb, var(--ushb-brand) 26%, transparent);
+}
+
+.ushb--style-gradient .ushb-btn {
+	background-image: linear-gradient(135deg, var(--ushb-brand) 0%, color-mix(in srgb, var(--ushb-brand) 55%, #000) 100%);
+	box-shadow: var(--ushb-shadow);
+}
+
+/*
+ * color-mix has good support but is not universal. These fallbacks keep the
+ * minimal and glass fills legible where it is missing.
+ */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+	.ushb--style-minimal .ushb-btn:hover,
+	.ushb--style-glass .ushb-btn {
+		background: rgba(0, 0, 0, 0.06);
+	}
+
+	/* Without color-mix the glow falls back to the brand colour, blurred. */
+	.ushb--hover-glow .ushb-btn:hover {
+		box-shadow: 0 0 16px 2px var(--ushb-brand);
+	}
+
+	.ushb--style-glass .ushb-btn {
+		border-color: rgba(0, 0, 0, 0.14);
+	}
+}
+
+/* -------------------------------------------------------------- palettes */
+
+.ushb--palette-mono .ushb-btn {
+	--ushb-brand: var(--ushb-ink);
+}
+
+.ushb--palette-inherit .ushb-btn {
+	--ushb-brand: currentColor;
+	background: transparent;
+	color: inherit;
+}
+
+.ushb--palette-inherit.ushb--style-filled .ushb-btn {
+	background: rgba(0, 0, 0, 0.06);
+}
+
+/* ---------------------------------------------------------------- hovers */
+
+.ushb--hover-lift .ushb-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(16, 24, 40, 0.18);
+}
+
+.ushb--hover-grow .ushb-btn:hover {
+	transform: scale(1.09);
+}
+
+/*
+ * A halo, not a hairline. The earlier rule drew a 4px ring with no blur at 28%
+ * opacity, which computed correctly but was invisible against a solid button.
+ * A tight ring plus a blurred spread is what actually reads as a glow.
+ */
+.ushb--hover-glow .ushb-btn:hover {
+	box-shadow:
+		0 0 0 3px color-mix(in srgb, var(--ushb-brand) 32%, transparent),
+		0 0 18px 3px color-mix(in srgb, var(--ushb-brand) 60%, transparent);
+}
+
+.ushb--hover-slide .ushb-btn {
+	position: relative;
+	overflow: hidden;
+}
+
+.ushb--hover-slide .ushb-btn::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(255, 255, 255, 0.22);
+	transform: translateX(-101%);
+	transition: transform 0.25s ease;
+}
+
+.ushb--hover-slide .ushb-btn:hover::before {
+	transform: translateX(0);
+}
+
+.ushb--hover-slide .ushb-btn > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* ------------------------------------------------------------- placement */
+
+/* Floating sidebar. */
+.ushb-floating-wrap {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9998;
+}
+
+.ushb-floating-wrap .ushb {
+	margin: 0;
+}
+
+.ushb-floating-wrap .ushb {
+	margin: 0;
+}
+
+.ushb--floating .ushb__buttons {
+	flex-direction: column;
+}
+
+.ushb--side-left {
+	left: 12px;
+}
+
+.ushb--side-right {
+	right: 12px;
+}
+
+.ushb-floating-wrap:not(.is-visible) {
+	display: none;
+}
+
+/* Sticky mobile bar. */
+.ushb-sticky-wrap {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9998;
+	padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+	background: var(--ushb-surface, #fff);
+	border-top: 1px solid var(--ushb-line, rgba(16, 24, 40, 0.12));
+	box-shadow: 0 -2px 12px rgba(16, 24, 40, 0.1);
+}
+
+.ushb-sticky-wrap .ushb {
+	margin: 0;
+}
+
+.ushb-sticky-wrap:not(.is-visible) {
+	display: none;
+}
+
+.ushb--sticky .ushb__buttons {
+	flex-wrap: nowrap;
+	justify-content: space-around;
+}
+
+/* --------------------------------------------------------- popup + modal */
+
+.ushb-popup {
+	display: inline-block;
+}
+
+.ushb-popup__trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	padding: 0.65em 1.1em;
+	border: 1px solid rgba(16, 24, 40, 0.16);
+	border-radius: 999px;
+	background: #fff;
+	color: #1a202c;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.ushb-popup__trigger .ushb-btn__icon {
+	width: 1.1em;
+	height: 1.1em;
+	display: inline-flex;
+}
+
+.ushb-popup__trigger:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 14px rgba(16, 24, 40, 0.14);
+}
+
+.ushb-modal[hidden] {
+	display: none;
+}
+
+.ushb-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.ushb-modal__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(11, 15, 25, 0.55);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+}
+
+.ushb-modal__panel {
+	position: relative;
+	width: min(460px, 100%);
+	max-height: 85vh;
+	overflow-y: auto;
+	padding: 22px;
+	border-radius: 16px;
+	background: #fff;
+	color: #1a202c;
+	box-shadow: 0 24px 60px rgba(11, 15, 25, 0.35);
+	animation: ushb-pop 0.18s ease-out;
+}
+
+@keyframes ushb-pop {
+	from {
+		opacity: 0;
+		transform: translateY(8px) scale(0.98);
+	}
+}
+
+.ushb-modal__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 14px;
+}
+
+.ushb-modal__head h2 {
+	margin: 0;
+	font-size: 1.05rem;
+}
+
+.ushb-modal__close {
+	border: 0;
+	background: transparent;
+	font-size: 1.6rem;
+	line-height: 1;
+	cursor: pointer;
+	color: #667085;
+	padding: 0 4px;
+}
+
+.ushb-modal .ushb {
+	margin: 0;
+}
+
+.ushb-modal .ushb__buttons {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ushb-modal .ushb-btn {
+	justify-content: flex-start;
+}
+
+/* QR panel, injected by the script. */
+.ushb-qr {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	text-align: center;
+}
+
+.ushb-qr img,
+.ushb-qr canvas {
+	width: 220px;
+	height: 220px;
+	border-radius: 12px;
+	background: #fff;
+	padding: 10px;
+	box-shadow: inset 0 0 0 1px rgba(16, 24, 40, 0.1);
+}
+
+.ushb-qr__url {
+	font-size: 0.85rem;
+	color: #667085;
+	word-break: break-all;
+}
+
+/* ----------------------------------------------------------- quote block */
+
+.ushb-quote {
+	--ushb-brand: #1a202c;
+
+	margin: 2em 0;
+	padding: 1.4em 1.6em;
+	border-left: 4px solid var(--ushb-brand);
+	border-radius: 4px 12px 12px 4px;
+	background: rgba(16, 24, 40, 0.04);
+}
+
+.ushb-quote--dark {
+	background: #14181f;
+	color: #edf0f5;
+}
+
+.ushb-quote--plain {
+	background: transparent;
+}
+
+.ushb-quote__text {
+	margin: 0 0 0.9em;
+	padding: 0;
+	border: 0;
+	font-size: 1.15em;
+	font-weight: 500;
+	line-height: 1.5;
+	quotes: none;
+}
+
+.ushb-quote__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	font-size: 0.9em;
+	font-weight: 600;
+	color: var(--ushb-brand);
+	text-decoration: none;
+}
+
+.ushb-quote--dark .ushb-quote__cta {
+	color: #edf0f5;
+}
+
+.ushb-quote__cta .ushb-btn__icon {
+	display: inline-flex;
+	width: 1.1em;
+	height: 1.1em;
+}
+
+.ushb-quote__cta:hover {
+	text-decoration: underline;
+}
+
+/* ------------------------------------------------------------ toast + a11y */
+
+.ushb-toast {
+	position: fixed;
+	left: 50%;
+	bottom: 28px;
+	transform: translateX(-50%) translateY(10px);
+	z-index: 100001;
+	padding: 10px 18px;
+	border-radius: 999px;
+	background: #14181f;
+	color: #fff;
+	font-size: 0.9rem;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ushb-toast.is-visible {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+.ushb-btn--needs-native {
+	display: none;
+}
+
+.ushb-has-native .ushb-btn--needs-native {
+	display: inline-flex;
+}
+
+.ushb-empty {
+	padding: 12px;
+	border: 1px dashed rgba(16, 24, 40, 0.25);
+	border-radius: 8px;
+	color: #667085;
+	font-size: 0.9em;
+}
+
+/* ---------------------------------------------------------- colour scheme */
+
+.ushb--scheme-dark {
+	--ushb-surface: #14181f;
+	--ushb-ink: #edf0f5;
+	--ushb-muted: #98a2b3;
+	--ushb-line: rgba(255, 255, 255, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+	.ushb--scheme-auto {
+		--ushb-surface: #14181f;
+		--ushb-ink: #edf0f5;
+		--ushb-muted: #98a2b3;
+		--ushb-line: rgba(255, 255, 255, 0.14);
+	}
+
+	.ushb--scheme-auto.ushb--palette-inherit.ushb--style-filled .ushb-btn {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+/* ------------------------------------------------------------- responsive */
+
+@media (max-width: 600px) {
+	.ushb--labels-both .ushb-btn__label {
+		display: none;
+	}
+
+	.ushb--labels-both .ushb-btn {
+		width: var(--ushb-size);
+		padding: 0;
+	}
+
+	.ushb-modal .ushb__buttons {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media print {
+	.ushb,
+	.ushb-floating-wrap,
+	.ushb-sticky-wrap,
+	.ushb-popup,
+	.ushb-modal {
+		display: none !important;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ushb-btn,
+	.ushb-popup__trigger,
+	.ushb-toast,
+	.ushb--hover-slide .ushb-btn::before {
+		transition: none;
+	}
+
+	.ushb-btn:hover,
+	.ushb-popup__trigger:hover {
+		transform: none;
+	}
+
+	.ushb-modal__panel {
+		animation: none;
+	}
+}
+/**
+ * Brand colours, generated from the network catalogue.
+ *
+ * These live here rather than in inline style attributes so that no button
+ * carries inline CSS.
+ */
+
+.ushb--palette-brand .ushb-btn--facebook{--ushb-brand:#1877F2}
+.ushb--palette-brand .ushb-btn--x{--ushb-brand:#000000}
+.ushb--palette-brand .ushb-btn--linkedin{--ushb-brand:#0A66C2}
+.ushb--palette-brand .ushb-btn--pinterest{--ushb-brand:#BD081C}
+.ushb--palette-brand .ushb-btn--reddit{--ushb-brand:#FF4500}
+.ushb--palette-brand .ushb-btn--bluesky{--ushb-brand:#0285FF}
+.ushb--palette-brand .ushb-btn--threads{--ushb-brand:#000000}
+.ushb--palette-brand .ushb-btn--mastodon{--ushb-brand:#6364FF}
+.ushb--palette-brand .ushb-btn--tumblr{--ushb-brand:#36465D}
+.ushb--palette-brand .ushb-btn--vk{--ushb-brand:#0077FF}
+.ushb--palette-brand .ushb-btn--odnoklassniki{--ushb-brand:#EE8208}
+.ushb--palette-brand .ushb-btn--xing{--ushb-brand:#026466}
+.ushb--palette-brand .ushb-btn--weibo{--ushb-brand:#E6162D}
+.ushb--palette-brand .ushb-btn--qq{--ushb-brand:#1EBAFC}
+.ushb--palette-brand .ushb-btn--wechat{--ushb-brand:#07C160}
+.ushb--palette-brand .ushb-btn--snapchat{--ushb-brand:#FFC800}
+.ushb--palette-brand .ushb-btn--nextdoor{--ushb-brand:#7DBB00}
+.ushb--palette-brand .ushb-btn--mewe{--ushb-brand:#17377F}
+.ushb--palette-brand .ushb-btn--minds{--ushb-brand:#7D7D7D}
+.ushb--palette-brand .ushb-btn--diaspora{--ushb-brand:#000000}
+.ushb--palette-brand .ushb-btn--livejournal{--ushb-brand:#00B0EA}
+.ushb--palette-brand .ushb-btn--blogger{--ushb-brand:#FF5722}
+.ushb--palette-brand .ushb-btn--flipboard{--ushb-brand:#E12828}
+.ushb--palette-brand .ushb-btn--hackernews{--ushb-brand:#FF6600}
+.ushb--palette-brand .ushb-btn--digg{--ushb-brand:#000000}
+.ushb--palette-brand .ushb-btn--whatsapp{--ushb-brand:#25D366}
+.ushb--palette-brand .ushb-btn--telegram{--ushb-brand:#26A5E4}
+.ushb--palette-brand .ushb-btn--messenger{--ushb-brand:#00B2FF}
+.ushb--palette-brand .ushb-btn--viber{--ushb-brand:#7360F2}
+.ushb--palette-brand .ushb-btn--line{--ushb-brand:#00C300}
+.ushb--palette-brand .ushb-btn--threema{--ushb-brand:#000000}
+.ushb--palette-brand .ushb-btn--sms{--ushb-brand:#4F9C4F}
+.ushb--palette-brand .ushb-btn--email{--ushb-brand:#5B6B7C}
+.ushb--palette-brand .ushb-btn--instapaper{--ushb-brand:#1F1F1F}
+.ushb--palette-brand .ushb-btn--evernote{--ushb-brand:#00A82D}
+.ushb--palette-brand .ushb-btn--trello{--ushb-brand:#0052CC}
+.ushb--palette-brand .ushb-btn--buffer{--ushb-brand:#231F20}
+.ushb--palette-brand .ushb-btn--bookmark{--ushb-brand:#6B5B95}
+.ushb--palette-brand .ushb-btn--chatgpt{--ushb-brand:#10A37F}
+.ushb--palette-brand .ushb-btn--claude{--ushb-brand:#D97757}
+.ushb--palette-brand .ushb-btn--gemini{--ushb-brand:#8E75B2}
+.ushb--palette-brand .ushb-btn--perplexity{--ushb-brand:#20808D}
+.ushb--palette-brand .ushb-btn--grok{--ushb-brand:#000000}
+.ushb--palette-brand .ushb-btn--google{--ushb-brand:#4285F4}
+.ushb--palette-brand .ushb-btn--copy{--ushb-brand:#4A5568}
+.ushb--palette-brand .ushb-btn--native{--ushb-brand:#2D3748}
+.ushb--palette-brand .ushb-btn--qr{--ushb-brand:#1A202C}
+.ushb--palette-brand .ushb-btn--print{--ushb-brand:#718096}
+
+/* Two brand marks are light enough to need dark glyphs on top. */
+.ushb--palette-brand .ushb-btn--snapchat{--ushb-on-brand:#16181d}
+.ushb--palette-brand .ushb-btn--minds{--ushb-on-brand:#16181d}
+
+.ushb-chip--facebook .ushb-chip__icon{color:#1877F2}
+.ushb-chip--x .ushb-chip__icon{color:#000000}
+.ushb-chip--linkedin .ushb-chip__icon{color:#0A66C2}
+.ushb-chip--pinterest .ushb-chip__icon{color:#BD081C}
+.ushb-chip--reddit .ushb-chip__icon{color:#FF4500}
+.ushb-chip--bluesky .ushb-chip__icon{color:#0285FF}
+.ushb-chip--threads .ushb-chip__icon{color:#000000}
+.ushb-chip--mastodon .ushb-chip__icon{color:#6364FF}
+.ushb-chip--tumblr .ushb-chip__icon{color:#36465D}
+.ushb-chip--vk .ushb-chip__icon{color:#0077FF}
+.ushb-chip--odnoklassniki .ushb-chip__icon{color:#EE8208}
+.ushb-chip--xing .ushb-chip__icon{color:#026466}
+.ushb-chip--weibo .ushb-chip__icon{color:#E6162D}
+.ushb-chip--qq .ushb-chip__icon{color:#1EBAFC}
+.ushb-chip--wechat .ushb-chip__icon{color:#07C160}
+.ushb-chip--snapchat .ushb-chip__icon{color:#FFC800}
+.ushb-chip--nextdoor .ushb-chip__icon{color:#7DBB00}
+.ushb-chip--mewe .ushb-chip__icon{color:#17377F}
+.ushb-chip--minds .ushb-chip__icon{color:#7D7D7D}
+.ushb-chip--diaspora .ushb-chip__icon{color:#000000}
+.ushb-chip--livejournal .ushb-chip__icon{color:#00B0EA}
+.ushb-chip--blogger .ushb-chip__icon{color:#FF5722}
+.ushb-chip--flipboard .ushb-chip__icon{color:#E12828}
+.ushb-chip--hackernews .ushb-chip__icon{color:#FF6600}
+.ushb-chip--digg .ushb-chip__icon{color:#000000}
+.ushb-chip--whatsapp .ushb-chip__icon{color:#25D366}
+.ushb-chip--telegram .ushb-chip__icon{color:#26A5E4}
+.ushb-chip--messenger .ushb-chip__icon{color:#00B2FF}
+.ushb-chip--viber .ushb-chip__icon{color:#7360F2}
+.ushb-chip--line .ushb-chip__icon{color:#00C300}
+.ushb-chip--threema .ushb-chip__icon{color:#000000}
+.ushb-chip--sms .ushb-chip__icon{color:#4F9C4F}
+.ushb-chip--email .ushb-chip__icon{color:#5B6B7C}
+.ushb-chip--instapaper .ushb-chip__icon{color:#1F1F1F}
+.ushb-chip--evernote .ushb-chip__icon{color:#00A82D}
+.ushb-chip--trello .ushb-chip__icon{color:#0052CC}
+.ushb-chip--buffer .ushb-chip__icon{color:#231F20}
+.ushb-chip--bookmark .ushb-chip__icon{color:#6B5B95}
+.ushb-chip--chatgpt .ushb-chip__icon{color:#10A37F}
+.ushb-chip--claude .ushb-chip__icon{color:#D97757}
+.ushb-chip--gemini .ushb-chip__icon{color:#8E75B2}
+.ushb-chip--perplexity .ushb-chip__icon{color:#20808D}
+.ushb-chip--grok .ushb-chip__icon{color:#000000}
+.ushb-chip--google .ushb-chip__icon{color:#4285F4}
+.ushb-chip--copy .ushb-chip__icon{color:#4A5568}
+.ushb-chip--native .ushb-chip__icon{color:#2D3748}
+.ushb-chip--qr .ushb-chip__icon{color:#1A202C}
+.ushb-chip--print .ushb-chip__icon{color:#718096}
+
+
+/* Analytics rows: colour the whole row so bars match their network. */
+.ushb-bars__row.ushb-chip--facebook{color:#1877F2}
+.ushb-bars__row.ushb-chip--x{color:#000000}
+.ushb-bars__row.ushb-chip--linkedin{color:#0A66C2}
+.ushb-bars__row.ushb-chip--pinterest{color:#BD081C}
+.ushb-bars__row.ushb-chip--reddit{color:#FF4500}
+.ushb-bars__row.ushb-chip--bluesky{color:#0285FF}
+.ushb-bars__row.ushb-chip--threads{color:#000000}
+.ushb-bars__row.ushb-chip--mastodon{color:#6364FF}
+.ushb-bars__row.ushb-chip--tumblr{color:#36465D}
+.ushb-bars__row.ushb-chip--vk{color:#0077FF}
+.ushb-bars__row.ushb-chip--odnoklassniki{color:#EE8208}
+.ushb-bars__row.ushb-chip--xing{color:#026466}
+.ushb-bars__row.ushb-chip--weibo{color:#E6162D}
+.ushb-bars__row.ushb-chip--qq{color:#1EBAFC}
+.ushb-bars__row.ushb-chip--wechat{color:#07C160}
+.ushb-bars__row.ushb-chip--snapchat{color:#FFC800}
+.ushb-bars__row.ushb-chip--nextdoor{color:#7DBB00}
+.ushb-bars__row.ushb-chip--mewe{color:#17377F}
+.ushb-bars__row.ushb-chip--minds{color:#7D7D7D}
+.ushb-bars__row.ushb-chip--diaspora{color:#000000}
+.ushb-bars__row.ushb-chip--livejournal{color:#00B0EA}
+.ushb-bars__row.ushb-chip--blogger{color:#FF5722}
+.ushb-bars__row.ushb-chip--flipboard{color:#E12828}
+.ushb-bars__row.ushb-chip--hackernews{color:#FF6600}
+.ushb-bars__row.ushb-chip--digg{color:#000000}
+.ushb-bars__row.ushb-chip--whatsapp{color:#25D366}
+.ushb-bars__row.ushb-chip--telegram{color:#26A5E4}
+.ushb-bars__row.ushb-chip--messenger{color:#00B2FF}
+.ushb-bars__row.ushb-chip--viber{color:#7360F2}
+.ushb-bars__row.ushb-chip--line{color:#00C300}
+.ushb-bars__row.ushb-chip--threema{color:#000000}
+.ushb-bars__row.ushb-chip--sms{color:#4F9C4F}
+.ushb-bars__row.ushb-chip--email{color:#5B6B7C}
+.ushb-bars__row.ushb-chip--instapaper{color:#1F1F1F}
+.ushb-bars__row.ushb-chip--evernote{color:#00A82D}
+.ushb-bars__row.ushb-chip--trello{color:#0052CC}
+.ushb-bars__row.ushb-chip--buffer{color:#231F20}
+.ushb-bars__row.ushb-chip--bookmark{color:#6B5B95}
+.ushb-bars__row.ushb-chip--chatgpt{color:#10A37F}
+.ushb-bars__row.ushb-chip--claude{color:#D97757}
+.ushb-bars__row.ushb-chip--gemini{color:#8E75B2}
+.ushb-bars__row.ushb-chip--perplexity{color:#20808D}
+.ushb-bars__row.ushb-chip--grok{color:#000000}
+.ushb-bars__row.ushb-chip--google{color:#4285F4}
+.ushb-bars__row.ushb-chip--copy{color:#4A5568}
+.ushb-bars__row.ushb-chip--native{color:#2D3748}
+.ushb-bars__row.ushb-chip--qr{color:#1A202C}
+.ushb-bars__row.ushb-chip--print{color:#718096}

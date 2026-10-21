@@ -1,0 +1,24 @@
+/**
+ * Unstoppable Solutions menu branding.
+ *
+ * Loaded on every admin screen because the menu is present on every admin
+ * screen. It is a handful of colour rules and nothing else.
+ */
+
+#adminmenu .toplevel_page_unstoppable-share-buttons .wp-menu-name {
+	color: #f0b849;
+}
+
+#adminmenu .toplevel_page_unstoppable-share-buttons:hover .wp-menu-name,
+#adminmenu .toplevel_page_unstoppable-share-buttons.current .wp-menu-name {
+	color: #fff;
+}
+
+#adminmenu .toplevel_page_unstoppable-share-buttons .wp-menu-image:before {
+	color: #f0b849;
+}
+
+#adminmenu .toplevel_page_unstoppable-share-buttons:hover .wp-menu-image:before,
+#adminmenu .toplevel_page_unstoppable-share-buttons.current .wp-menu-image:before {
+	color: #fff;
+}

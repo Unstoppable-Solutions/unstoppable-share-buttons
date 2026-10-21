@@ -1,0 +1,140 @@
+Unstoppable Share Buttons - Changelog
+====================================
+
+1.0.9
+-----
+* Changed: the shortcode and template tag reference is now shown on the
+  Placement tab as well as Content and meta. Placement is where people go when
+  they want to position a bar by hand, and the reference being only on the last
+  tab made the shortcodes effectively undiscoverable.
+* Changed: that reference now comes from one method rather than being written
+  out in the view, so the two tabs cannot drift apart.
+
+1.0.8
+-----
+* Fixed: Pill and Circle were visually identical. The two shapes shared one
+  border-radius rule, and the icon-only mode that forces width to equal height
+  turned Pill into a circle. Pill now keeps horizontal padding; Circle uses a
+  true 50% radius and is always square.
+* Fixed: Circle and Drop became ellipses when labels were enabled. Both shapes
+  only hold their form at a 1:1 ratio, so both now stay square and suppress the
+  label and count.
+* Fixed: the Glow hover effect computed correctly but rendered as almost
+  nothing: a zero-blur 4px ring at 28% opacity. Replaced with a 3px ring plus
+  an 18px blurred spread, and the color-mix fallback now covers Glow as well as
+  the minimal and glass fills.
+
+1.0.7
+-----
+* Fixed: bars in the analytics network breakdown inherited no colour and all
+  rendered grey. The row now carries the network colour so the icon and the bar
+  match.
+
+1.0.6
+-----
+* Removed: the Custom CSS textarea and everything supporting it. WordPress has
+  its own CSS editor, and storing arbitrary CSS for later output duplicates
+  core functionality that is better tested.
+* Changed: admin menu branding moved from an inline <style> block into
+  assets/css/admin-menu.css, enqueued through admin_enqueue_scripts.
+* Changed: the welcome notice is limited to this plugin's own admin screens.
+* Removed: the review request notice.
+* Changed: readme tags no longer repeat variations of the same keyword, and the
+  network count is stated accurately as 48.
+
+1.0.5
+-----
+* Passes the official Plugin Check (zero errors) and PHP_CodeSniffer with the
+  full WordPress standard (zero errors, zero warnings).
+* Raised "Tested up to" to WordPress 7.0 after verifying on 7.0.2.
+* Fixed: two phpcs:ignore annotations for escaped output sat on the echo line
+  rather than the lines the sniff actually reports, so they covered nothing.
+  The markup is now assigned to a variable and echoed on a single annotated
+  line.
+* Changed: USHB_Plugin moved to includes/class-ushb-plugin.php, leaving the
+  main plugin file with just the header, constants and entry points.
+* Changed: index.php guard files carry a proper file docblock.
+
+1.0.4
+-----
+* Added: automatic repair of settings emptied by the save bug fixed in 1.0.3.
+  Fixing the bug stopped further damage but could not restore values already
+  written, so a site whose network list had been emptied still showed nothing.
+  The upgrade routine now restores the emptied lists and re-enables the inline
+  bar, using a narrow signature so a deliberate configuration is never altered.
+* Added: a diagnostics report on the Tools screen that states plainly whether a
+  bar can render and, if not, which condition is blocking it.
+
+1.0.3
+-----
+* Fixed: saving one settings tab wiped the settings on every other tab. The
+  save handler ran the full sanitiser over a partial submission, so any key not
+  present in the posted form was written back as its default. The visible
+  symptom was share buttons disappearing from the site after visiting the
+  settings screen, because inline_networks was emptied and a bar with no
+  networks renders nothing.
+* Each form now declares the settings it owns through a hidden field registry,
+  and the handler merges only those keys over the stored values. A checkbox on
+  the saved tab can still be switched off; a checkbox on another tab is left
+  alone; an undeclared key in the payload is ignored.
+
+1.0.2
+-----
+* Fixed: admin notices appeared inside the plugin's header panel, because
+  WordPress relocates them to follow the first heading on the screen. Each
+  screen now has a screen-reader heading for them to attach to.
+* Fixed: the sticky Save bar could overlap the card beneath it.
+* Verified on a real WordPress 7.0.2 install across three block themes.
+
+1.0.1
+-----
+* Fixed: the inline share bar did not render on block themes. Block themes
+  output post content through the core/post-content block, which applies the
+  the_content filter without iterating the main loop, so in_the_loop() is
+  false. The guard now also accepts the queried post on a singular view, which
+  covers classic and block themes without opening the filter to widgets or
+  secondary queries.
+* Fixed: a bar could be injected into an excerpt in themes that run excerpts
+  through the_content.
+
+1.0.0
+-----
+Initial release.
+
+Placements
+* Inline bar with above, below, both and mid-post positions.
+* Floating sidebar with a configurable side, vertical offset and minimum screen width.
+* Sticky mobile bar with a maximum screen width.
+* Universal share button opening an accessible dialog.
+* WooCommerce product sharing with five position choices.
+
+Networks
+* 48 destinations across social, messaging, read-later, AI assistants and device actions.
+* Brand marks bundled locally as inline SVG. No icon font, no CDN.
+* Drag-to-reorder network picker, per placement.
+* Extendable through the ushb_networks filter.
+
+Design
+* Six shapes: square, rounded, pill, circle, ribbon, drop.
+* Six fills: filled, outline, minimal, dashed, glass, gradient.
+* Four palettes: brand colours, one custom colour, monochrome, inherit.
+* Five hover effects, adjustable size, gap and radius.
+* Light, dark and automatic colour schemes.
+* Custom CSS field, sanitised and delivered through wp_add_inline_style().
+
+Measurement
+* First-party click analytics stored in a local table, off by default.
+* Analytics screen with a daily chart, per-network breakdown and most-shared posts.
+* UTM tagging with {network}, {sitename}, {title} and {post_id} placeholders.
+* Optional GA4, Meta Pixel and Tag Manager events fired through existing scripts.
+
+Integrations
+* Server-rendered editor block.
+* Elementor widget with content and style controls.
+* Five shortcodes and two template tags.
+* Open Graph and X card tags that stand down when an SEO plugin is active.
+
+Tools
+* Settings export and import as JSON.
+* Clear share history and restore defaults.
+* Opt-in data removal on uninstall.
