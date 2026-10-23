@@ -3,8 +3,6 @@
 .gitignore
 .distignore
 .gitattributes
-.wordpress-org
-branding
 README.md
 SECURITY.md
 CONTRIBUTING.md

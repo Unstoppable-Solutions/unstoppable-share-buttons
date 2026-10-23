@@ -40,7 +40,5 @@ jobs:
             CONTRIBUTING.md
             CHANGELOG.md
             ROADMAP.md
-            .wordpress-org
-            branding
           include-experimental: true
 
