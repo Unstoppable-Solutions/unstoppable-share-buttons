@@ -45,12 +45,12 @@ Tested 2026-10-23 on a clean WP 7.1.3 install with `WP_DEBUG` and `SCRIPT_DEBUG`
 
 ---
 
-### 1.4 Untested integrations
-**Description:** The Elementor widget, WooCommerce product sharing, the editor block and the AJAX click-tracking round trip have never been exercised against the real dependency — only linted. Settings import/export likewise.
-**Benefit:** These are the most likely source of the next user-visible bug. Four previous bugs in this plugin all lived in code that was lint-clean but unrun.
-**Priority:** High · **Complexity:** Medium · **Milestone:** v1.1.0 · **Status:** Proposed · **Source:** Previous Discussion
+### 1.4 Untested integrations — ✅ Completed
+**Description:** The Elementor widget, WooCommerce product sharing, the editor block, the AJAX click-tracking round trip and settings import/export had never been exercised against the real dependency — only linted.
+**Benefit:** These were the most likely source of the next user-visible bug. Four previous bugs in this plugin all lived in code that was lint-clean but unrun.
+**Priority:** High · **Complexity:** Medium · **Milestone:** v1.0.9 · **Status:** Completed · **Source:** Previous Discussion
 
-Install WooCommerce and Elementor on the test site, insert the block in a real editor, fire a tracked share click end to end, and round-trip a settings export.
+Verified 2026-10-23 against WooCommerce 11.2.1 and Elementor 4.3.5 on WordPress 7.1.3. **No code changes were needed — all five worked as written.** Details in the verification table below.
 
 ---
 
@@ -205,9 +205,10 @@ What has and has not been exercised against real software, so the next session d
 | `uninstall.php`, both opt paths | ✅ Verified on WP 7.1.3 |
 | QR encoder, versions 1–15 | ✅ Decoded with an independent reader |
 | Plugin Check / PHPCS | ✅ Clean on WP 7.1.3 |
-| Elementor widget | ❌ Never run against Elementor |
-| WooCommerce integration | ❌ Never run against WooCommerce |
-| Editor block | ❌ Never inserted in a real editor |
-| AJAX click tracking round trip | ❌ Never fired end to end |
-| Settings import / export | ❌ Never round-tripped |
+| Elementor widget | ✅ Registers and renders on Elementor 4.3.5; all 8 controls map through |
+| WooCommerce integration | ✅ Verified on WooCommerce 11.2.1 — all 5 positions, product image and description enrichment |
+| Editor block | ✅ Renders standalone and in a published post; empty-network fallback graceful |
+| AJAX click tracking round trip | ✅ Real browser clicks recorded; aggregates rather than duplicating; bad nonce and unknown network both rejected |
+| Settings import / export | ✅ Round-tripped; malformed JSON rejected without damaging stored settings |
+| Three plugins active together | ✅ No conflicts, no PHP notices, Plugin Check clean |
 | Deploy workflow | ❌ Never fired |

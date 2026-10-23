@@ -13,6 +13,11 @@ Unreleased
   because WordPress.org accepts only the major version there and Plugin Check
   errors on a patch number.
 * Added: ROADMAP.md.
+* Verified (no code changes needed): the Elementor widget, WooCommerce product
+  sharing in all five positions, the editor block, the AJAX click-tracking round
+  trip and settings import/export, all against WooCommerce 11.2.1 and Elementor
+  4.3.5 on WordPress 7.1.3. These paths had previously been linted but never
+  executed.
 
 1.0.9
 -----
