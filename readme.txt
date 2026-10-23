@@ -4,7 +4,7 @@ Donate link: https://unstoppablesolutions.app/donate
 Tags: social sharing, share buttons, social media, woocommerce, analytics
 Requires at least: 5.8
 Tested up to: 7.1
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -128,6 +128,17 @@ You can clear all recorded history at any time from Unstoppable Share → Tools,
 
 == Changelog ==
 
+= 1.1.0 =
+* Fixed: "Delete settings and share history on uninstall" did nothing. The
+  setting on the Tools screen saved correctly, but the plugin had no uninstall
+  handler, so deleting it left every setting, the click history table and all
+  cached values behind. Both paths are now tested — switched on removes
+  everything, and switched off (the default) keeps everything.
+* Verified against WordPress 7.1.3, and against WooCommerce 11.2.1 and
+  Elementor 4.3.5. The Elementor widget, WooCommerce product sharing, the
+  editor block, click tracking and settings import/export were all exercised
+  against the real software for the first time; no changes were needed.
+
 = 1.0.9 =
 * The shortcode reference now appears on the Placement tab, where people look
   when they want to put a bar somewhere specific. It was previously only at the
@@ -200,3 +211,10 @@ You can clear all recorded history at any time from Unstoppable Share → Tools,
 
 = 1.0.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.1.0 =
+Fixes the "delete data on uninstall" setting, which previously did nothing.
+If you have that box ticked, deleting the plugin now really does remove its
+data. Leave it unticked (the default) and nothing is removed.

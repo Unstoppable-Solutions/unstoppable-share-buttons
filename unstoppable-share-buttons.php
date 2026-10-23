@@ -3,7 +3,7 @@
  * Plugin Name: Unstoppable Share Buttons
  * Plugin URI: https://unstoppablesolutions.app/plugins/unstoppable-share-buttons
  * Description: Social sharing done properly. Inline, floating, sticky mobile and popup share bars with 48 networks, first-party click analytics, UTM tagging, a block, an Elementor widget and WooCommerce support.
- * Version: 1.0.9
+ * Version: 1.1.0
  * Author: Unstoppable Solutions
  * Author URI: https://unstoppablesolutions.app
  * License: GPL-2.0-or-later
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'USHB_VERSION', '1.0.9' );
+define( 'USHB_VERSION', '1.1.0' );
 define( 'USHB_FILE', __FILE__ );
 define( 'USHB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'USHB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

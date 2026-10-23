@@ -1,8 +1,8 @@
 Unstoppable Share Buttons - Changelog
 ====================================
 
-Unreleased
-----------
+1.1.0
+-----
 * Added: uninstall.php. The Tools screen has always offered "Delete settings and
   share history on uninstall", but no uninstall handler existed, so ticking it
   did nothing and deleting the plugin left every option, the click table and all
