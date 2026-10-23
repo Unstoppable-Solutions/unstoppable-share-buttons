@@ -59,7 +59,13 @@ Verified 2026-10-23 against WooCommerce 11.2.1 and Elementor 4.3.5 on WordPress 
 **Benefit:** The WP.org listing currently renders without artwork, which reads as abandoned in a crowded category.
 **Priority:** High · **Complexity:** Small · **Milestone:** v1.1.0 · **Status:** Proposed · **Source:** Previous Discussion
 
-These live in SVN `assets/` at the repo root, not in `trunk/`, and need no version bump or release.
+These end up in SVN `assets/` at the repo root, not in `trunk/`, and need no version bump or release.
+
+**Put the source files in `.wordpress-org/`, not `assets/`.** The deploy action's
+`ASSETS_DIR` defaults to `.wordpress-org` and it moves that folder's contents to
+SVN's root-level `assets/`. This repo's own `assets/` already holds the plugin's
+CSS and JS, so artwork dropped there would ship inside the plugin as dead weight
+and never reach the listing.
 
 ---
 
@@ -68,7 +74,23 @@ These live in SVN `assets/` at the repo root, not in `trunk/`, and need no versi
 **Benefit:** Confirms the automation before it is relied on, rather than discovering a broken secret mid-release.
 **Priority:** High · **Complexity:** Small · **Milestone:** v1.1.0 · **Status:** Proposed · **Source:** Code Review
 
-Confirm `SVN_USERNAME` / `SVN_PASSWORD` org secrets resolve for this repo, then cut the next release as a tagged GitHub Release and watch the run.
+Confirm `SVN_USERNAME` / `SVN_PASSWORD` org secrets resolve for this repo, then cut the release as a tagged GitHub Release and watch the run.
+
+Two constraints found while preparing 1.1.0, both of which apply to any future
+session and neither of which is a repo misconfiguration:
+
+- **A Claude session cannot create a release or push a tag.** Both return
+  `403` from the GitHub proxy (`Creating, editing, or deleting releases is not
+  permitted for this session type`). Claude can take the work to a pushed,
+  CI-green commit with release notes drafted; a human makes the Release.
+- **Secret names cannot be read either** — `/actions/secrets` is blocked on
+  both the org and repo paths, so the secrets cannot be pre-verified from a
+  session. A wrong or missing secret fails the deploy run loudly and nothing
+  reaches WP.org, so this is recoverable rather than dangerous.
+
+Confirmed by inspection instead: `.distignore` is respected (the workflow sets
+no `BUILD_DIR`, which would disable it), and `ASSETS_DIR` defaults to
+`.wordpress-org`, so the plugin's `assets/` is correctly treated as code.
 
 ---
 
