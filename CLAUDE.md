@@ -7,7 +7,7 @@
 Social share bars for WordPress — inline, floating, sticky, popup. 48 networks, first-party click analytics, no third-party scripts.
 
 - **Main PHP file:** `unstoppable-share-buttons.php`
-- **Code prefix:** `USB_`
+- **Code prefix:** `USHB_`
 - **WordPress.org slug:** `unstoppable-share-buttons`
 - **WP.org URL:** https://wordpress.org/plugins/unstoppable-share-buttons/
 
@@ -23,7 +23,7 @@ Releases are deployed to WordPress.org SVN automatically by GitHub Actions. The 
 1. Finish feature work on `main`.
 2. Bump the version in **all** of these:
    - `unstoppable-share-buttons.php` — `Version:` header
-   - `unstoppable-share-buttons.php` — USB_VERSION constant (if present)
+   - `unstoppable-share-buttons.php` — `USHB_VERSION` constant
    - `readme.txt` — `Stable tag:`
    - `readme.txt` — add a `== Changelog ==` entry
 3. Commit and push `main`.
@@ -44,7 +44,7 @@ _(none — this plugin passes Plugin Check cleanly without any ignores.)_
 
 - **GPL-2.0-or-later** on everything.
 - **One author** for Contributors: in `readme.txt`: `paramedic192` (Dave Stevens).
-- **Tested up to** is bumped as WordPress ships each new .x. We're currently on 7.1 ("Mary Lou", Aug 2026).
+- **Tested up to** is bumped as WordPress ships each new release. The header takes the **major version only** (`7.1`) — Plugin Check raises `invalid_tested_upto_minor` on a patch number such as `7.1.3`. Record the exact tested build in `changelog.txt`/`README.md` instead. Currently verified against 7.1.3.
 - **Plugin Check CI config** (`.github/workflows/plugin-check.yml`) is standard across the org: `exclude-checks: late_escaping` + `exclude-files` lists the GitHub-only files (`.github`, `.distignore`, `.gitignore`, `.gitattributes`, `README.md`, `CLAUDE.md`, `SECURITY.md`, `CONTRIBUTING.md`, `CHANGELOG.md`).
 - **`.distignore`** keeps GitHub-only files out of the WP.org zip (CI, docs, this file).
 - **Prefer `phpcs:ignore` + inline rationale** over removing the ignored check from CI entirely — a specific ignore documents the decision at the call site; a check removal silently covers future code too.

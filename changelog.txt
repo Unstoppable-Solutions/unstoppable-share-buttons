@@ -1,6 +1,19 @@
 Unstoppable Share Buttons - Changelog
 ====================================
 
+Unreleased
+----------
+* Added: uninstall.php. The Tools screen has always offered "Delete settings and
+  share history on uninstall", but no uninstall handler existed, so ticking it
+  did nothing and deleting the plugin left every option, the click table and all
+  transients behind. Both paths are now tested: opted in removes everything;
+  opted out (the default) preserves everything.
+* Changed: verified against WordPress 7.1.3 on a clean install with WP_DEBUG on;
+  Plugin Check and PHPCS both clean. The "Tested up to" header stays at 7.1,
+  because WordPress.org accepts only the major version there and Plugin Check
+  errors on a patch number.
+* Added: ROADMAP.md.
+
 1.0.9
 -----
 * Changed: the shortcode and template tag reference is now shown on the

@@ -8,6 +8,22 @@ Social sharing done properly. Inline, floating, sticky-mobile and popup share ba
 
 > **End users:** install from the WordPress Plugin Directory — [wordpress.org/plugins/unstoppable-share-buttons](https://wordpress.org/plugins/unstoppable-share-buttons/)
 
+## Compatibility
+
+| | |
+|---|---|
+| Requires WordPress | 5.8 or newer |
+| Tested up to | 7.1 (verified against 7.1.3) |
+| Requires PHP | 7.4 or newer |
+| License | GPL-2.0-or-later |
+
+Verified against WordPress 7.1.3 with `WP_DEBUG` enabled: no notices, warnings or
+deprecations. Plugin Check and PHPCS (full WordPress standard) both pass cleanly.
+
+The `Tested up to` header reads `7.1` rather than `7.1.3` because WordPress.org
+accepts only the major version there — Plugin Check raises
+`invalid_tested_upto_minor` if a patch number is included.
+
 ## Features
 
 - **48 share networks** — all the usual (X, Facebook, LinkedIn, WhatsApp, Reddit, Pinterest, Telegram) plus 40+ more
@@ -17,6 +33,11 @@ Social sharing done properly. Inline, floating, sticky-mobile and popup share ba
 - **Gutenberg block + Elementor widget** — drop share buttons into any layout
 - **WooCommerce support** — share product pages with pre-filled product data
 - **Zero external scripts** — no bloat, no cookie banner headaches
+
+## Roadmap
+
+Planned work is tracked in [`ROADMAP.md`](ROADMAP.md), including what has and has
+not been verified against real software.
 
 ## Development
 
