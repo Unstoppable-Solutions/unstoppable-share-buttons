@@ -804,7 +804,11 @@ class USHB_Admin {
 		$rows = array(
 			array(
 				'[unstoppable_share]',
-				__( 'A share bar. Accepts networks, shape, style, labels, align, size, palette, color, counts, heading and cta.', 'unstoppable-share-buttons' ),
+				__( 'A share bar. Accepts networks, placement, shape, style, labels, align, size, palette, color, counts, heading and cta.', 'unstoppable-share-buttons' ),
+			),
+			array(
+				'[unstoppable_share placement="footer"]',
+				__( 'Name a bar so it reports separately on the Analytics screen and can be styled on its own with .ushb--footer. Use any label you like; several bars on one page each keep their own figures.', 'unstoppable-share-buttons' ),
 			),
 			array(
 				'[unstoppable_share_button]',

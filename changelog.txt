@@ -1,6 +1,22 @@
 Unstoppable Share Buttons - Changelog
 ====================================
 
+Unreleased
+----------
+* Added: a "placement" attribute on [unstoppable_share]. Every shortcode bar
+  previously reported as "shortcode", so a bar in the sidebar, one in the footer
+  and one mid-content were indistinguishable on the Analytics screen. Give each
+  one a name - [unstoppable_share placement="footer"] - and it reports under
+  that name and gains a .ushb--footer class to style on its own. Any label
+  works; existing shortcodes are unaffected and keep reporting as "shortcode".
+  Naming a placement that has its own network list (inline, floating, sticky)
+  also makes that list the default.
+* Added: languages/unstoppable-share-buttons.pot, the translation catalogue.
+  The plugin has 357 translatable strings and shipped without one.
+* Fixed: a manual run of the deploy workflow would have written an SVN tag
+  named after the branch ref rather than the version. Release-triggered
+  deployments were never affected.
+
 1.1.0
 -----
 * Added: uninstall.php. The Tools screen has always offered "Delete settings and

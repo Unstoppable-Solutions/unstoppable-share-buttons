@@ -100,6 +100,10 @@ WeChat has no public web share endpoint, so there is no address to send anyone t
 
 Use `[unstoppable_share]` in your content, the block in the editor, the Elementor widget, or `ushb_share_bar()` in a theme template.
 
+= I have several bars on one page. Can I tell which one people actually use? =
+
+Yes. Give each one a name with the `placement` attribute, like `[unstoppable_share placement="footer"]`. Each name is reported separately on the Analytics screen, so you can see whether the footer bar or the one above the post is doing the work. Each also gets a matching CSS class, `.ushb--footer` in that example, if you want to style one differently from another.
+
 == Screenshots ==
 
 1. Settings, with a live preview that updates as you change shape, fill and colour.

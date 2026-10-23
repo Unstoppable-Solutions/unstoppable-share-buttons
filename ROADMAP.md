@@ -118,12 +118,26 @@ no `BUILD_DIR`, which would disable it), and `ASSETS_DIR` defaults to
 
 ## Phase 2: Short-Term Improvements
 
-### 2.1 `placement` attribute on the share shortcode
-**Description:** Every shortcode bar currently records `placement = 'shortcode'` (`class-ushb-shortcodes.php:61`). A bar in the sidebar, one in the footer and one mid-content are indistinguishable in analytics. Add `placement="footer"` so each location reports separately and gains a `.ushb--footer` class to style against.
+### 2.1 `placement` attribute on the share shortcode — ✅ Completed (unreleased)
+**Description:** Every shortcode bar recorded `placement = 'shortcode'`. A bar in the sidebar, one in the footer and one mid-content were indistinguishable in analytics. `placement="footer"` now makes each location report separately and gain a `.ushb--footer` class to style against.
 **Benefit:** Answers "which bar is actually working", which is the main reason to look at the analytics screen at all.
-**Priority:** Medium · **Complexity:** Small · **Milestone:** v1.1.0 · **Status:** Proposed · **Source:** Previous Discussion
+**Priority:** Medium · **Complexity:** Small · **Milestone:** next release · **Status:** Completed on `main`, awaiting release · **Source:** Previous Discussion
 
-Placement already flows cleanly to three consumers — the default network list, a CSS class and the `data-place` attribute that reaches the analytics table — so this is roughly a ten-line change plus a fallback when the named list does not exist.
+The label is free-form, `sanitize_key`'d and capped at 20 characters to match
+the `placement varchar(20)` column, so the length is decided in PHP rather than
+by the database. An empty or fully-sanitised-away value falls back to
+`shortcode`, which is also the default, so existing shortcodes are untouched.
+
+`networks` is now passed through empty rather than being forced to the inline
+list, which lets the renderer resolve the list for the named placement and fall
+back to inline when there is no setting of that name. Same result for every
+pre-existing shortcode; `placement="floating"` now picks up `floating_networks`.
+
+Verified on WP 7.1.3: default still reports `shortcode`; custom labels report
+and class themselves correctly; `"Foot Bar!"` sanitises to `footbar`; a
+35-character label caps at exactly 20 and stores without truncation; an
+attribute-injection attempt reduces to `a`; and `USHB_Stats` writes one row per
+placement, aggregating repeat clicks within each. Plugin Check and PHPCS clean.
 
 ---
 

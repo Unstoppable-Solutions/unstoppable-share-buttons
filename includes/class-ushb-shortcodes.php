@@ -29,24 +29,32 @@ class USHB_Shortcodes {
 	/**
 	 * Renders a share bar.
 	 *
+	 * The `placement` attribute is a free-form label, defaulting to
+	 * `shortcode`. It is what the analytics table records and what forms the
+	 * `.ushb--{placement}` class, so two bars on one page given different
+	 * labels report separately and can be styled apart. Naming a placement
+	 * that has its own network setting (`inline`, `floating`, `sticky`) also
+	 * makes that list the default; anything else falls back to the inline list.
+	 *
 	 * @param array $atts Shortcode attributes.
 	 * @return string Markup.
 	 */
 	public static function bar( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'networks' => '',
-				'post_id'  => 0,
-				'shape'    => USHB_Settings::get( 'shape' ),
-				'style'    => USHB_Settings::get( 'style' ),
-				'labels'   => USHB_Settings::get( 'labels' ),
-				'align'    => USHB_Settings::get( 'inline_align' ),
-				'size'     => USHB_Settings::get( 'size' ),
-				'palette'  => USHB_Settings::get( 'palette' ),
-				'color'    => USHB_Settings::get( 'custom_color' ),
-				'counts'   => USHB_Settings::get( 'show_counts' ),
-				'heading'  => '',
-				'cta'      => '',
+				'networks'  => '',
+				'placement' => 'shortcode',
+				'post_id'   => 0,
+				'shape'     => USHB_Settings::get( 'shape' ),
+				'style'     => USHB_Settings::get( 'style' ),
+				'labels'    => USHB_Settings::get( 'labels' ),
+				'align'     => USHB_Settings::get( 'inline_align' ),
+				'size'      => USHB_Settings::get( 'size' ),
+				'palette'   => USHB_Settings::get( 'palette' ),
+				'color'     => USHB_Settings::get( 'custom_color' ),
+				'counts'    => USHB_Settings::get( 'show_counts' ),
+				'heading'   => '',
+				'cta'       => '',
 			),
 			$atts,
 			'unstoppable_share'
@@ -56,11 +64,25 @@ class USHB_Shortcodes {
 
 		$color = sanitize_hex_color( $atts['color'] );
 
+		// A free-form label so several bars on one page report separately in
+		// analytics and can be styled apart via .ushb--{placement}. The clicks
+		// table stores it in a varchar(20), so cap it there rather than letting
+		// the database decide what to keep.
+		$placement = substr( sanitize_key( $atts['placement'] ), 0, 20 );
+
+		if ( '' === $placement ) {
+			$placement = 'shortcode';
+		}
+
 		return USHB_Render::bar(
 			array(
-				'placement'   => 'shortcode',
+				'placement'   => $placement,
 				'post_id'     => absint( $atts['post_id'] ),
-				'networks'    => $atts['networks'] ? $atts['networks'] : USHB_Settings::get( 'inline_networks' ),
+				// Left empty on purpose: the renderer then resolves the network
+				// list for this placement, falling back to the inline list when
+				// there is no setting of that name -- which is every custom
+				// label, and 'shortcode' itself.
+				'networks'    => $atts['networks'],
 				'shape'       => sanitize_key( $atts['shape'] ),
 				'style'       => sanitize_key( $atts['style'] ),
 				'labels'      => sanitize_key( $atts['labels'] ),
