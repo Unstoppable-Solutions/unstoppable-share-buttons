@@ -1,14 +1,30 @@
 name: Deploy to WordPress.org
 
-# Dormant until this plugin is accepted into the WordPress.org directory.
-# Add SVN_USERNAME and SVN_PASSWORD secrets in repo settings before the
-# first release, and update the SLUG value below to match the plugin's
-# WordPress.org slug.
+# Publishes to the WordPress.org SVN repository. First fired for real on
+# 2026-10-23 for v1.1.0: the org-level SVN_USERNAME / SVN_PASSWORD secrets
+# resolve for this repo, trunk and tags/1.1.0 were committed, and SVN assets/
+# was correctly left alone.
+#
+# Normal route: publish a GitHub Release tagged vX.Y.Z. The action strips the
+# leading v, so the SVN tag lands as X.Y.Z.
+#
+# Re-running against an already-published version is safe -- deploy.sh bails
+# early and still produces the zip.
+#
+# WARNING: the action rsyncs ASSETS_DIR (.wordpress-org) over SVN assets/ with
+# --delete. This repo deliberately has no .wordpress-org directory, so the step
+# is skipped and the live banner, icon and screenshots are untouched. Adding
+# that directory REPLACES all of them. See ROADMAP 1.5.
 
 on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish, e.g. 1.1.1 — no leading v. The tag vX.Y.Z must already exist."
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -19,8 +35,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # On a release this is the release's tag. On a manual run it must be the
+      # tag for the requested version -- the default would be main's HEAD,
+      # which is not necessarily what that version contains.
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version && format('refs/tags/v{0}', inputs.version) || github.ref }}
 
       - name: WordPress Plugin Deploy
         id: deploy
@@ -31,6 +52,10 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: unstoppable-share-buttons
+          # Empty on a release, so deploy.sh falls back to deriving the version
+          # from the tag ref. Set on a manual run, where that derivation would
+          # otherwise yield the literal string "refs/heads/main".
+          VERSION: ${{ inputs.version }}
 
       - name: Upload release zip as a GitHub Release asset
         if: github.event_name == 'release'

@@ -26,9 +26,25 @@ Releases are deployed to WordPress.org SVN automatically by GitHub Actions. The 
    - `unstoppable-share-buttons.php` — `USHB_VERSION` constant
    - `readme.txt` — `Stable tag:`
    - `readme.txt` — add a `== Changelog ==` entry
-3. Commit and push `main`.
-4. On GitHub, create a new **Release** tagged `vX.Y.Z` (semver) with the changelog in the body.
-5. The `deploy-to-wporg.yml` workflow fires and pushes the release to WP.org SVN.
+   - `readme.txt` — add an `== Upgrade Notice ==` entry if the release changes
+     behaviour a site owner would want warning about
+3. Regenerate the translation catalogue, whose header carries the version:
+   `php wp-cli.phar i18n make-pot . languages/unstoppable-share-buttons.pot --slug=unstoppable-share-buttons`
+4. Commit and push `main`. Wait for Plugin Check CI to go green.
+5. On GitHub, create a new **Release** tagged `vX.Y.Z` (semver) with the changelog in the body. **A Claude session cannot do this step** — creating a release and pushing a tag both return `403 ... not permitted for this session type`, so a human clicks Publish. Claude takes it to a pushed, CI-green commit with the notes drafted.
+6. The `deploy-to-wporg.yml` workflow fires and pushes the release to WP.org SVN. Confirm it landed against WP.org itself, not just a green run: `curl -s https://api.wordpress.org/plugins/info/1.0/unstoppable-share-buttons.json`
+
+### Never add a `.wordpress-org/` directory to this repo
+
+The deploy action rsyncs `ASSETS_DIR` (default `.wordpress-org`) over SVN
+`assets/` **with `--delete`**. The directory is deliberately absent, so the step
+is skipped and the live banner, icon and five screenshots stay as they are.
+Creating it replaces all of them with whatever it contains.
+
+The listing's artwork already exists and is good. `plugins/info/1.0` reports
+`banners: null` and `icons: null` for this plugin anyway, so an API check looks
+like proof they are missing when they are not — check
+`https://plugins.svn.wordpress.org/unstoppable-share-buttons/assets/` instead.
 
 ## CI
 

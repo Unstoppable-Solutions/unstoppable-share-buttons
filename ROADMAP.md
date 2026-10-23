@@ -80,12 +80,23 @@ at `ps.w.org/.../icon-128x128.png?rev=3653551`.
 
 ---
 
-### 1.6 Verify the deploy workflow on a real release
-**Description:** `deploy-to-wporg.yml` is configured and correct on inspection, but has never fired — there are no GitHub Releases yet, and 1.0.9 reached WP.org by hand.
+### 1.6 Verify the deploy workflow on a real release — ✅ Completed
+**Description:** `deploy-to-wporg.yml` was correct on inspection but had never fired; 1.0.9 reached WP.org by hand.
 **Benefit:** Confirms the automation before it is relied on, rather than discovering a broken secret mid-release.
-**Priority:** High · **Complexity:** Small · **Milestone:** v1.1.0 · **Status:** Proposed · **Source:** Code Review
+**Priority:** High · **Complexity:** Small · **Milestone:** v1.1.0 · **Status:** Completed 2026-10-23 · **Source:** Code Review
 
-Confirm `SVN_USERNAME` / `SVN_PASSWORD` org secrets resolve for this repo, then cut the release as a tagged GitHub Release and watch the run.
+Fired for real on the v1.1.0 release
+([run 39967599971](https://github.com/Unstoppable-Solutions/unstoppable-share-buttons/actions/runs/39967599971)).
+Proven end to end, from the run log and SVN rather than from inspection:
+
+- The org secrets `SVN_USERNAME` / `SVN_PASSWORD` resolve for this repo.
+- `VERSION is 1.1.0` — the leading `v` strips correctly, and SVN `tags/1.1.0/`
+  was created next to 1.0.7 and 1.0.9.
+- `No assets directory found; skipping asset copy` — all nine files in SVN
+  `assets/` survived untouched.
+- WP.org flipped to 1.1.0 within the minute. Its `tested` field reads the
+  precise `7.1.3` taken from the readme body, even though the header may only
+  carry `7.1`, so the major-version-only rule costs nothing on the public page.
 
 Two constraints found while preparing 1.1.0, both of which apply to any future
 session and neither of which is a repo misconfiguration:
@@ -245,4 +256,5 @@ What has and has not been exercised against real software, so the next session d
 | Settings import / export | ✅ Round-tripped; malformed JSON rejected without damaging stored settings |
 | Three plugins active together | ✅ No conflicts, no PHP notices, Plugin Check clean |
 | Directory assets (banner, icon) | ✅ Present in SVN `assets/` and rendering on the live listing — confirmed against SVN and the page, not the info API, which reports null for both |
-| Deploy workflow | ❌ Never fired |
+| Deploy workflow | ✅ Fired for real on v1.1.0 — secrets resolve, SVN tag `1.1.0` created, assets correctly skipped |
+| `.pot` catalogue | ✅ Generated with WP-CLI 2.12.0 — 357 strings |

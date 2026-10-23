@@ -1,0 +1,1546 @@
+# Copyright (C) 2026 Unstoppable Solutions
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Unstoppable Share Buttons 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/unstoppable-share-buttons\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-23T14:16:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: unstoppable-share-buttons\n"
+
+#. Plugin Name of the plugin
+#: unstoppable-share-buttons.php
+#: admin/class-ushb-admin.php:62
+#: admin/views/settings.php:26
+#: includes/class-ushb-blocks.php:60
+#: includes/class-ushb-elementor-widget.php:39
+msgid "Unstoppable Share Buttons"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: unstoppable-share-buttons.php
+msgid "https://unstoppablesolutions.app/plugins/unstoppable-share-buttons"
+msgstr ""
+
+#. Description of the plugin
+#: unstoppable-share-buttons.php
+msgid "Social sharing done properly. Inline, floating, sticky mobile and popup share bars with 48 networks, first-party click analytics, UTM tagging, a block, an Elementor widget and WooCommerce support."
+msgstr ""
+
+#. Author of the plugin
+#: unstoppable-share-buttons.php
+msgid "Unstoppable Solutions"
+msgstr ""
+
+#. Author URI of the plugin
+#: unstoppable-share-buttons.php
+msgid "https://unstoppablesolutions.app"
+msgstr ""
+
+#: admin/class-ushb-admin-notices.php:105
+msgid "Share buttons are live on your posts already. Choose your networks and style whenever you are ready."
+msgstr ""
+
+#: admin/class-ushb-admin-notices.php:107
+msgid "Open settings"
+msgstr ""
+
+#: admin/class-ushb-admin.php:51
+#: admin/class-ushb-admin.php:74
+msgid "Settings"
+msgstr ""
+
+#: admin/class-ushb-admin.php:63
+msgid "Unstoppable Share"
+msgstr ""
+
+#: admin/class-ushb-admin.php:73
+msgid "Share button settings"
+msgstr ""
+
+#: admin/class-ushb-admin.php:82
+#: admin/views/analytics.php:27
+#: admin/views/analytics.php:35
+msgid "Share analytics"
+msgstr ""
+
+#: admin/class-ushb-admin.php:83
+msgid "Analytics"
+msgstr ""
+
+#: admin/class-ushb-admin.php:91
+msgid "Share button tools"
+msgstr ""
+
+#: admin/class-ushb-admin.php:92
+#: admin/views/tools.php:23
+msgid "Tools"
+msgstr ""
+
+#: admin/class-ushb-admin.php:129
+msgid "This clears every recorded share click and cannot be undone. Continue?"
+msgstr ""
+
+#: admin/class-ushb-admin.php:130
+msgid "This restores every setting to its default and cannot be undone. Continue?"
+msgstr ""
+
+#: admin/class-ushb-admin.php:145
+msgid "You do not have permission to change these settings."
+msgstr ""
+
+#: admin/class-ushb-admin.php:146
+#: admin/class-ushb-admin.php:190
+msgid "Permission denied"
+msgstr ""
+
+#: admin/class-ushb-admin.php:165
+msgid "Settings saved."
+msgstr ""
+
+#: admin/class-ushb-admin.php:189
+msgid "You do not have permission to run this."
+msgstr ""
+
+#: admin/class-ushb-admin.php:217
+msgid "Settings imported."
+msgstr ""
+
+#: admin/class-ushb-admin.php:220
+msgid "That did not look like an export from this plugin. Paste the whole JSON file, including the outer braces."
+msgstr ""
+
+#: admin/class-ushb-admin.php:228
+msgid "Share history cleared."
+msgstr ""
+
+#: admin/class-ushb-admin.php:233
+msgid "Settings restored to their defaults."
+msgstr ""
+
+#: admin/class-ushb-admin.php:244
+msgid "Saved."
+msgstr ""
+
+#: admin/class-ushb-admin.php:272
+msgid "Placement"
+msgstr ""
+
+#: admin/class-ushb-admin.php:273
+#: includes/class-ushb-elementor-widget.php:107
+#: assets/js/block.js:130
+msgid "Networks"
+msgstr ""
+
+#: admin/class-ushb-admin.php:274
+msgid "Design"
+msgstr ""
+
+#: admin/class-ushb-admin.php:275
+msgid "Measurement"
+msgstr ""
+
+#: admin/class-ushb-admin.php:276
+msgid "Content and meta"
+msgstr ""
+
+#: admin/class-ushb-admin.php:298
+#: admin/class-ushb-admin.php:309
+#: admin/class-ushb-admin.php:320
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: admin/class-ushb-admin.php:559
+#: admin/class-ushb-admin.php:703
+msgid "Post types"
+msgstr ""
+
+#: admin/class-ushb-admin.php:561
+msgid "Bars appear on the single view of the types you tick here."
+msgstr ""
+
+#: admin/class-ushb-admin.php:590
+msgid "Showing, in this order"
+msgstr ""
+
+#: admin/class-ushb-admin.php:604
+msgid "Nothing chosen yet. Pick a network below."
+msgstr ""
+
+#: admin/class-ushb-admin.php:669
+msgid "Remove"
+msgstr ""
+
+#: admin/class-ushb-admin.php:670
+msgid "Add"
+msgstr ""
+
+#: admin/class-ushb-admin.php:697
+#: admin/views/settings.php:70
+#: admin/views/settings.php:162
+msgid "Inline bar"
+msgstr ""
+
+#: admin/class-ushb-admin.php:699
+#: admin/class-ushb-admin.php:744
+msgid "Enabled"
+msgstr ""
+
+#: admin/class-ushb-admin.php:699
+msgid "Switched off, so no bar is added to post content"
+msgstr ""
+
+#: admin/class-ushb-admin.php:705
+msgid "None selected, so bars cannot appear anywhere"
+msgstr ""
+
+#: admin/class-ushb-admin.php:709
+msgid "Networks in the inline bar"
+msgstr ""
+
+#. translators: %d: number of networks.
+#: admin/class-ushb-admin.php:712
+#, php-format
+msgid "%d network"
+msgid_plural "%d networks"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of networks.
+#: admin/class-ushb-admin.php:712
+msgid "Empty, and a bar with no networks renders nothing"
+msgstr ""
+
+#: admin/class-ushb-admin.php:716
+msgid "Hidden from logged-in users"
+msgstr ""
+
+#: admin/class-ushb-admin.php:718
+msgid "No"
+msgstr ""
+
+#: admin/class-ushb-admin.php:718
+msgid "Yes, so you will not see bars while signed in"
+msgstr ""
+
+#: admin/class-ushb-admin.php:723
+msgid "Excluded posts"
+msgstr ""
+
+#: admin/class-ushb-admin.php:725
+#: admin/views/settings.php:230
+msgid "None"
+msgstr ""
+
+#: admin/class-ushb-admin.php:729
+#: admin/views/settings.php:61
+msgid "Front page"
+msgstr ""
+
+#: admin/class-ushb-admin.php:731
+#: admin/class-ushb-admin.php:737
+msgid "Bars allowed"
+msgstr ""
+
+#: admin/class-ushb-admin.php:731
+msgid "Off by default, so the front page shows no bars"
+msgstr ""
+
+#: admin/class-ushb-admin.php:735
+#: admin/views/settings.php:62
+msgid "Archives and blog index"
+msgstr ""
+
+#: admin/class-ushb-admin.php:737
+msgid "Off by default, so post listings show no bars"
+msgstr ""
+
+#: admin/class-ushb-admin.php:742
+#: admin/class-ushb-admin.php:748
+#: admin/views/settings.php:138
+msgid "WooCommerce products"
+msgstr ""
+
+#: admin/class-ushb-admin.php:744
+msgid "Switched off, so products show no bars"
+msgstr ""
+
+#: admin/class-ushb-admin.php:750
+msgid "WooCommerce is not active"
+msgstr ""
+
+#: admin/class-ushb-admin.php:757
+msgid "the inline bar is switched off"
+msgstr ""
+
+#: admin/class-ushb-admin.php:761
+msgid "no post types are selected"
+msgstr ""
+
+#: admin/class-ushb-admin.php:765
+msgid "the inline bar has no networks"
+msgstr ""
+
+#: admin/class-ushb-admin.php:781
+msgid "A share bar should appear on the single view of the post types listed above."
+msgstr ""
+
+#. translators: %s: list of reasons, already joined.
+#: admin/class-ushb-admin.php:788
+#, php-format
+msgid "No bar can render right now because %s."
+msgstr ""
+
+#: admin/class-ushb-admin.php:789
+msgid ", and "
+msgstr ""
+
+#: admin/class-ushb-admin.php:807
+msgid "A share bar. Accepts networks, shape, style, labels, align, size, palette, color, counts, heading and cta."
+msgstr ""
+
+#: admin/class-ushb-admin.php:811
+msgid "One button that opens the share dialog."
+msgstr ""
+
+#: admin/class-ushb-admin.php:815
+msgid "A pull quote people can post in one click."
+msgstr ""
+
+#: admin/class-ushb-admin.php:819
+msgid "The ask an AI row."
+msgstr ""
+
+#: admin/class-ushb-admin.php:823
+msgid "The recorded share total for a post."
+msgstr ""
+
+#: admin/class-ushb-admin.php:827
+msgid "Template tag for theme files. Takes the same arguments."
+msgstr ""
+
+#: admin/views/analytics.php:36
+msgid "Clicks recorded on your own site. No third party involved."
+msgstr ""
+
+#: admin/views/analytics.php:44
+msgid "Click recording is switched off, so these numbers are not moving."
+msgstr ""
+
+#: admin/views/analytics.php:46
+msgid "Turn it on"
+msgstr ""
+
+#: admin/views/analytics.php:52
+msgid "Date range"
+msgstr ""
+
+#: admin/views/analytics.php:55
+msgid "Last 7 days"
+msgstr ""
+
+#: admin/views/analytics.php:56
+msgid "Last 30 days"
+msgstr ""
+
+#: admin/views/analytics.php:57
+msgid "Last 90 days"
+msgstr ""
+
+#: admin/views/analytics.php:58
+msgid "Last year"
+msgstr ""
+
+#: admin/views/analytics.php:72
+msgid "Shares in range"
+msgstr ""
+
+#: admin/views/analytics.php:76
+msgid "Busiest day"
+msgstr ""
+
+#: admin/views/analytics.php:80
+msgid "Networks used"
+msgstr ""
+
+#: admin/views/analytics.php:84
+msgid "All time"
+msgstr ""
+
+#: admin/views/analytics.php:92
+msgid "Nothing recorded yet"
+msgstr ""
+
+#: admin/views/analytics.php:93
+msgid "Once visitors start using your share buttons, their clicks appear here within a few seconds."
+msgstr ""
+
+#: admin/views/analytics.php:96
+msgid "Set up your share bars"
+msgstr ""
+
+#: admin/views/analytics.php:104
+msgid "Shares per day"
+msgstr ""
+
+#: admin/views/analytics.php:105
+msgid "Bar chart of share clicks per day"
+msgstr ""
+
+#: admin/views/analytics.php:122
+msgid "By network"
+msgstr ""
+
+#: admin/views/analytics.php:145
+msgid "Most shared"
+msgstr ""
+
+#: admin/views/analytics.php:147
+msgid "No posts in this range."
+msgstr ""
+
+#: admin/views/analytics.php:159
+msgid "(no title)"
+msgstr ""
+
+#: admin/views/analytics.php:162
+msgid "(deleted post)"
+msgstr ""
+
+#: admin/views/settings.php:18
+msgid "Unstoppable Share Buttons settings"
+msgstr ""
+
+#: admin/views/settings.php:27
+msgid "Share buttons where you want them, looking how you want."
+msgstr ""
+
+#: admin/views/settings.php:32
+msgid "shares recorded"
+msgstr ""
+
+#: admin/views/settings.php:36
+msgid "Settings sections"
+msgstr ""
+
+#: admin/views/settings.php:58
+msgid "Where bars can appear"
+msgstr ""
+
+#: admin/views/settings.php:63
+msgid "Hide from logged-in users"
+msgstr ""
+
+#: admin/views/settings.php:64
+msgid "Never show on these post IDs"
+msgstr ""
+
+#: admin/views/settings.php:64
+msgid "Comma separated, for example <code>12, 340, 512</code>."
+msgstr ""
+
+#: admin/views/settings.php:65
+msgid "Always show on these post IDs"
+msgstr ""
+
+#: admin/views/settings.php:65
+msgid "Overrides every rule above, including the exclude list."
+msgstr ""
+
+#: admin/views/settings.php:71
+msgid "Sits in the flow of the post content."
+msgstr ""
+
+#: admin/views/settings.php:73
+msgid "Enable the inline bar"
+msgstr ""
+
+#: admin/views/settings.php:76
+#: admin/views/settings.php:144
+msgid "Position"
+msgstr ""
+
+#: admin/views/settings.php:78
+msgid "Above"
+msgstr ""
+
+#: admin/views/settings.php:79
+msgid "Below"
+msgstr ""
+
+#: admin/views/settings.php:80
+msgid "Both"
+msgstr ""
+
+#: admin/views/settings.php:81
+msgid "Mid-post"
+msgstr ""
+
+#: admin/views/settings.php:84
+msgid "Insert after paragraph"
+msgstr ""
+
+#: admin/views/settings.php:84
+msgid "Only used by the mid-post position. Falls back to the end of the post when there are fewer paragraphs than this."
+msgstr ""
+
+#: admin/views/settings.php:87
+#: includes/class-ushb-elementor-widget.php:186
+#: assets/js/block.js:118
+msgid "Alignment"
+msgstr ""
+
+#: admin/views/settings.php:89
+#: admin/views/settings.php:107
+#: includes/class-ushb-elementor-widget.php:191
+#: assets/js/block.js:121
+msgid "Left"
+msgstr ""
+
+#: admin/views/settings.php:90
+#: includes/class-ushb-elementor-widget.php:195
+#: assets/js/block.js:122
+msgid "Center"
+msgstr ""
+
+#: admin/views/settings.php:91
+#: admin/views/settings.php:108
+#: includes/class-ushb-elementor-widget.php:199
+#: assets/js/block.js:123
+msgid "Right"
+msgstr ""
+
+#: admin/views/settings.php:94
+#: includes/class-ushb-elementor-widget.php:119
+#: assets/js/block.js:68
+msgid "Heading"
+msgstr ""
+
+#: admin/views/settings.php:94
+msgid "Optional line printed above the buttons."
+msgstr ""
+
+#: admin/views/settings.php:94
+#: includes/class-ushb-elementor-widget.php:121
+msgid "Share this post"
+msgstr ""
+
+#: admin/views/settings.php:99
+#: admin/views/settings.php:166
+msgid "Floating sidebar"
+msgstr ""
+
+#: admin/views/settings.php:100
+msgid "Sticks to the edge of the window and follows the reader down the page."
+msgstr ""
+
+#: admin/views/settings.php:102
+msgid "Enable the floating bar"
+msgstr ""
+
+#: admin/views/settings.php:105
+msgid "Side"
+msgstr ""
+
+#: admin/views/settings.php:111
+msgid "Vertical position"
+msgstr ""
+
+#: admin/views/settings.php:111
+msgid "Distance from the top of the window. 50 centres it."
+msgstr ""
+
+#: admin/views/settings.php:112
+msgid "Hide below this screen width"
+msgstr ""
+
+#: admin/views/settings.php:112
+msgid "Narrow screens rarely have room beside the content."
+msgstr ""
+
+#: admin/views/settings.php:117
+#: admin/views/settings.php:170
+msgid "Sticky mobile bar"
+msgstr ""
+
+#: admin/views/settings.php:118
+msgid "Pinned to the bottom of the screen on phones."
+msgstr ""
+
+#: admin/views/settings.php:120
+msgid "Enable the sticky bar"
+msgstr ""
+
+#: admin/views/settings.php:121
+msgid "Show below this screen width"
+msgstr ""
+
+#: admin/views/settings.php:126
+msgid "Place a bar by hand"
+msgstr ""
+
+#: admin/views/settings.php:128
+msgid "The bars above appear on their own. To put one in a particular spot instead — a widget, a page builder, a template, partway down a page — paste a shortcode where you want it."
+msgstr ""
+
+#: admin/views/settings.php:133
+msgid "There is also a block called Unstoppable Share Buttons in the editor, and a widget in Elementor."
+msgstr ""
+
+#: admin/views/settings.php:141
+msgid "Share bar on product pages"
+msgstr ""
+
+#: admin/views/settings.php:146
+msgid "After the price"
+msgstr ""
+
+#: admin/views/settings.php:147
+msgid "After the add-to-cart button"
+msgstr ""
+
+#: admin/views/settings.php:148
+msgid "After the product meta"
+msgstr ""
+
+#: admin/views/settings.php:149
+msgid "End of the summary column"
+msgstr ""
+
+#: admin/views/settings.php:150
+msgid "Below the tabs"
+msgstr ""
+
+#: admin/views/settings.php:155
+msgid "WooCommerce is not active, so there is nothing to configure here yet."
+msgstr ""
+
+#: admin/views/settings.php:162
+msgid "Click a network to add it, then drag to reorder."
+msgstr ""
+
+#: admin/views/settings.php:166
+msgid "Keep this list short. Five or six icons is usually the limit before it crowds the page."
+msgstr ""
+
+#: admin/views/settings.php:170
+msgid "Messaging apps and the device share sheet work best on phones."
+msgstr ""
+
+#: admin/views/settings.php:174
+msgid "Universal share button"
+msgstr ""
+
+#: admin/views/settings.php:175
+msgid "One button that opens a dialog with everything in it. Place it with the [unstoppable_share_button] shortcode."
+msgstr ""
+
+#: admin/views/settings.php:177
+msgid "Button text"
+msgstr ""
+
+#: admin/views/settings.php:177
+#: frontend/class-ushb-render.php:515
+#: includes/class-ushb-networks.php:408
+msgid "Share"
+msgstr ""
+
+#: admin/views/settings.php:178
+msgid "Networks in the dialog"
+msgstr ""
+
+#: admin/views/settings.php:184
+msgid "Product pages"
+msgstr ""
+
+#: admin/views/settings.php:191
+msgid "Shape and fill"
+msgstr ""
+
+#: admin/views/settings.php:195
+#: includes/class-ushb-elementor-widget.php:152
+#: assets/js/block.js:92
+msgid "Shape"
+msgstr ""
+
+#: admin/views/settings.php:197
+#: includes/class-ushb-elementor-widget.php:156
+#: assets/js/block.js:95
+msgid "Square"
+msgstr ""
+
+#: admin/views/settings.php:198
+#: includes/class-ushb-elementor-widget.php:157
+#: assets/js/block.js:96
+msgid "Rounded"
+msgstr ""
+
+#: admin/views/settings.php:199
+#: includes/class-ushb-elementor-widget.php:158
+#: assets/js/block.js:97
+msgid "Pill"
+msgstr ""
+
+#: admin/views/settings.php:200
+#: includes/class-ushb-elementor-widget.php:159
+#: assets/js/block.js:98
+msgid "Circle"
+msgstr ""
+
+#: admin/views/settings.php:201
+#: includes/class-ushb-elementor-widget.php:160
+#: assets/js/block.js:99
+msgid "Ribbon"
+msgstr ""
+
+#: admin/views/settings.php:202
+#: includes/class-ushb-elementor-widget.php:161
+#: assets/js/block.js:100
+msgid "Drop"
+msgstr ""
+
+#: admin/views/settings.php:207
+#: includes/class-ushb-elementor-widget.php:169
+#: assets/js/block.js:105
+msgid "Fill"
+msgstr ""
+
+#: admin/views/settings.php:209
+#: includes/class-ushb-elementor-widget.php:173
+#: assets/js/block.js:108
+msgid "Filled"
+msgstr ""
+
+#: admin/views/settings.php:210
+#: includes/class-ushb-elementor-widget.php:174
+#: assets/js/block.js:109
+msgid "Outline"
+msgstr ""
+
+#: admin/views/settings.php:211
+#: includes/class-ushb-elementor-widget.php:175
+#: assets/js/block.js:110
+msgid "Minimal"
+msgstr ""
+
+#: admin/views/settings.php:212
+#: includes/class-ushb-elementor-widget.php:176
+#: assets/js/block.js:111
+msgid "Dashed"
+msgstr ""
+
+#: admin/views/settings.php:213
+#: includes/class-ushb-elementor-widget.php:177
+#: assets/js/block.js:112
+msgid "Glass"
+msgstr ""
+
+#: admin/views/settings.php:214
+#: includes/class-ushb-elementor-widget.php:178
+#: assets/js/block.js:113
+msgid "Gradient"
+msgstr ""
+
+#: admin/views/settings.php:219
+#: includes/class-ushb-elementor-widget.php:128
+#: assets/js/block.js:73
+msgid "Button content"
+msgstr ""
+
+#: admin/views/settings.php:221
+#: includes/class-ushb-elementor-widget.php:132
+#: assets/js/block.js:76
+msgid "Icon only"
+msgstr ""
+
+#: admin/views/settings.php:222
+#: includes/class-ushb-elementor-widget.php:133
+#: assets/js/block.js:77
+msgid "Name only"
+msgstr ""
+
+#: admin/views/settings.php:223
+#: includes/class-ushb-elementor-widget.php:134
+#: assets/js/block.js:78
+msgid "Icon and name"
+msgstr ""
+
+#: admin/views/settings.php:228
+msgid "Hover"
+msgstr ""
+
+#: admin/views/settings.php:231
+msgid "Lift"
+msgstr ""
+
+#: admin/views/settings.php:232
+msgid "Grow"
+msgstr ""
+
+#: admin/views/settings.php:233
+msgid "Slide"
+msgstr ""
+
+#: admin/views/settings.php:234
+msgid "Glow"
+msgstr ""
+
+#: admin/views/settings.php:241
+msgid "Size and spacing"
+msgstr ""
+
+#: admin/views/settings.php:243
+msgid "Button size"
+msgstr ""
+
+#: admin/views/settings.php:244
+msgid "Gap between buttons"
+msgstr ""
+
+#: admin/views/settings.php:245
+msgid "Corner radius"
+msgstr ""
+
+#: admin/views/settings.php:245
+msgid "Used by the rounded shape. Pill and circle set their own."
+msgstr ""
+
+#: admin/views/settings.php:246
+msgid "Stretch buttons to fill the row"
+msgstr ""
+
+#: admin/views/settings.php:251
+msgid "Colour"
+msgstr ""
+
+#: admin/views/settings.php:255
+msgid "Palette"
+msgstr ""
+
+#: admin/views/settings.php:257
+#: includes/class-ushb-elementor-widget.php:213
+msgid "Brand colours"
+msgstr ""
+
+#: admin/views/settings.php:258
+msgid "One colour"
+msgstr ""
+
+#: admin/views/settings.php:259
+#: includes/class-ushb-elementor-widget.php:215
+msgid "Monochrome"
+msgstr ""
+
+#: admin/views/settings.php:260
+msgid "Inherit"
+msgstr ""
+
+#: admin/views/settings.php:263
+#: includes/class-ushb-elementor-widget.php:224
+msgid "Custom colour"
+msgstr ""
+
+#: admin/views/settings.php:264
+msgid "Icon colour on top"
+msgstr ""
+
+#: admin/views/settings.php:267
+msgid "Light or dark"
+msgstr ""
+
+#: admin/views/settings.php:269
+msgid "Follow the visitor"
+msgstr ""
+
+#: admin/views/settings.php:270
+msgid "Always light"
+msgstr ""
+
+#: admin/views/settings.php:271
+msgid "Always dark"
+msgstr ""
+
+#: admin/views/settings.php:278
+msgid "Extras"
+msgstr ""
+
+#: admin/views/settings.php:280
+msgid "Call to action"
+msgstr ""
+
+#: admin/views/settings.php:280
+msgid "A short line of encouragement printed with the bar."
+msgstr ""
+
+#: admin/views/settings.php:280
+msgid "Found this useful? Pass it on."
+msgstr ""
+
+#: admin/views/settings.php:283
+msgid "Call to action goes"
+msgstr ""
+
+#: admin/views/settings.php:285
+msgid "Above buttons"
+msgstr ""
+
+#: admin/views/settings.php:286
+msgid "Below buttons"
+msgstr ""
+
+#: admin/views/settings.php:289
+#: assets/js/block.js:83
+msgid "Show share counts"
+msgstr ""
+
+#: admin/views/settings.php:289
+msgid "Counts come from clicks recorded on this site, not from the networks themselves."
+msgstr ""
+
+#: admin/views/settings.php:290
+msgid "Hide the total below"
+msgstr ""
+
+#: admin/views/settings.php:290
+msgid "A total of two shares is worse than no total at all."
+msgstr ""
+
+#: admin/views/settings.php:297
+msgid "Built-in analytics"
+msgstr ""
+
+#: admin/views/settings.php:299
+msgid "Record share clicks"
+msgstr ""
+
+#: admin/views/settings.php:299
+msgid "Stores a per-day count of clicks by post and network on your own server. No IP address, browser or user ID is saved, and nothing is sent anywhere."
+msgstr ""
+
+#: admin/views/settings.php:303
+msgid "Open the analytics screen"
+msgstr ""
+
+#: admin/views/settings.php:309
+msgid "Send events elsewhere"
+msgstr ""
+
+#: admin/views/settings.php:310
+msgid "These fire through scripts your site already loads. This plugin never loads a tracker for you."
+msgstr ""
+
+#: admin/views/settings.php:312
+msgid "Google Analytics 4"
+msgstr ""
+
+#: admin/views/settings.php:312
+msgid "Fires the standard <code>share</code> event through an existing <code>gtag</code>."
+msgstr ""
+
+#: admin/views/settings.php:313
+msgid "Meta Pixel"
+msgstr ""
+
+#: admin/views/settings.php:313
+msgid "Fires a <code>Share</code> custom event through an existing <code>fbq</code>."
+msgstr ""
+
+#: admin/views/settings.php:314
+msgid "Google Tag Manager dataLayer"
+msgstr ""
+
+#: admin/views/settings.php:314
+msgid "Pushes an <code>unstoppable_share</code> event with the network, placement and post ID."
+msgstr ""
+
+#: admin/views/settings.php:319
+msgid "Campaign tagging"
+msgstr ""
+
+#: admin/views/settings.php:320
+msgid "Adds UTM parameters to the link people share, so returning traffic is attributable."
+msgstr ""
+
+#: admin/views/settings.php:322
+msgid "Add UTM parameters"
+msgstr ""
+
+#: admin/views/settings.php:323
+msgid "Source"
+msgstr ""
+
+#: admin/views/settings.php:323
+msgid "Placeholders: <code>{network}</code>, <code>{sitename}</code>, <code>{title}</code>, <code>{post_id}</code>."
+msgstr ""
+
+#: admin/views/settings.php:324
+msgid "Medium"
+msgstr ""
+
+#: admin/views/settings.php:325
+msgid "Campaign"
+msgstr ""
+
+#: admin/views/settings.php:326
+#: assets/js/block.js:66
+msgid "Content"
+msgstr ""
+
+#: admin/views/settings.php:327
+msgid "Term"
+msgstr ""
+
+#: admin/views/settings.php:334
+msgid "Network settings"
+msgstr ""
+
+#: admin/views/settings.php:336
+msgid "X username"
+msgstr ""
+
+#: admin/views/settings.php:336
+msgid "Added as <code>via</code> on shares to X. No @ needed."
+msgstr ""
+
+#: admin/views/settings.php:337
+msgid "Default hashtags"
+msgstr ""
+
+#: admin/views/settings.php:337
+msgid "Comma separated. The # is added for you."
+msgstr ""
+
+#: admin/views/settings.php:338
+msgid "Facebook App ID"
+msgstr ""
+
+#: admin/views/settings.php:338
+msgid "Required by the Messenger button and used for the <code>fb:app_id</code> tag."
+msgstr ""
+
+#: admin/views/settings.php:339
+msgid "Copy confirmation text"
+msgstr ""
+
+#: admin/views/settings.php:339
+#: frontend/class-ushb-frontend.php:137
+msgid "Link copied"
+msgstr ""
+
+#: admin/views/settings.php:344
+#: includes/class-ushb-networks.php:468
+msgid "Ask an AI"
+msgstr ""
+
+#: admin/views/settings.php:345
+msgid "The AI buttons open an assistant with a prompt already written. Place them with the [unstoppable_share_ai] shortcode."
+msgstr ""
+
+#: admin/views/settings.php:346
+msgid "Prompt"
+msgstr ""
+
+#: admin/views/settings.php:346
+msgid "Placeholders: <code>{url}</code>, <code>{title}</code>, <code>{sitename}</code>."
+msgstr ""
+
+#: admin/views/settings.php:350
+msgid "Link previews"
+msgstr ""
+
+#. translators: %s: name of the active SEO plugin.
+#: admin/views/settings.php:357
+#, php-format
+msgid "%s is already writing Open Graph tags, so this stays switched off. Two sets of tags confuse the scrapers they exist for."
+msgstr ""
+
+#: admin/views/settings.php:362
+msgid "Output Open Graph and X card tags"
+msgstr ""
+
+#: admin/views/settings.php:365
+msgid "Card size"
+msgstr ""
+
+#: admin/views/settings.php:367
+msgid "Small"
+msgstr ""
+
+#: admin/views/settings.php:368
+msgid "Large image"
+msgstr ""
+
+#: admin/views/settings.php:371
+msgid "Fallback image URL"
+msgstr ""
+
+#: admin/views/settings.php:371
+msgid "Used when a post has no featured image. Also used as the Pinterest image."
+msgstr ""
+
+#: admin/views/settings.php:376
+msgid "Shortcodes and template tags"
+msgstr ""
+
+#: admin/views/settings.php:385
+msgid "Save changes"
+msgstr ""
+
+#: admin/views/settings.php:391
+msgid "Preview"
+msgstr ""
+
+#: admin/views/settings.php:405
+msgid "Shape, fill, size and colour update as you change them. Save to apply."
+msgstr ""
+
+#: admin/views/settings.php:409
+msgid "Worth knowing"
+msgstr ""
+
+#: admin/views/settings.php:411
+msgid "Four to six networks beats twenty. Every extra button costs attention."
+msgstr ""
+
+#: admin/views/settings.php:412
+msgid "Put the inline bar below the post. People share after they read."
+msgstr ""
+
+#: admin/views/settings.php:413
+msgid "On phones the device share sheet beats individual network buttons."
+msgstr ""
+
+#: admin/views/settings.php:414
+msgid "Hide the share count until it is a number worth showing."
+msgstr ""
+
+#: admin/views/tools.php:15
+msgid "Unstoppable Share Buttons tools"
+msgstr ""
+
+#: admin/views/tools.php:24
+msgid "Move settings between sites and clear things out."
+msgstr ""
+
+#: admin/views/tools.php:30
+msgid "Why am I not seeing share buttons?"
+msgstr ""
+
+#: admin/views/tools.php:31
+msgid "Every condition the front end checks, with its current value."
+msgstr ""
+
+#: admin/views/tools.php:38
+msgid "Export"
+msgstr ""
+
+#: admin/views/tools.php:39
+msgid "Downloads every setting as JSON. Share history is not included."
+msgstr ""
+
+#: admin/views/tools.php:44
+msgid "Download settings"
+msgstr ""
+
+#: admin/views/tools.php:49
+msgid "Import"
+msgstr ""
+
+#: admin/views/tools.php:50
+msgid "Paste an export below. This replaces your current settings."
+msgstr ""
+
+#: admin/views/tools.php:56
+msgid "Import settings"
+msgstr ""
+
+#: admin/views/tools.php:61
+msgid "Clear share history"
+msgstr ""
+
+#. translators: %s: number of recorded clicks.
+#: admin/views/tools.php:66
+#, php-format
+msgid "Deletes all %s recorded clicks. Your settings are untouched."
+msgstr ""
+
+#: admin/views/tools.php:75
+msgid "Clear history"
+msgstr ""
+
+#: admin/views/tools.php:80
+#: admin/views/tools.php:86
+msgid "Restore defaults"
+msgstr ""
+
+#: admin/views/tools.php:81
+msgid "Puts every setting back to how it shipped. Share history is kept."
+msgstr ""
+
+#: admin/views/tools.php:91
+msgid "When the plugin is deleted"
+msgstr ""
+
+#: admin/views/tools.php:98
+msgid "Delete settings and share history on uninstall"
+msgstr ""
+
+#: admin/views/tools.php:100
+msgid "Off by default, so deactivating and reactivating never loses your setup."
+msgstr ""
+
+#: admin/views/tools.php:101
+msgid "Save"
+msgstr ""
+
+#: frontend/class-ushb-frontend.php:138
+msgid "Could not copy automatically. Press Ctrl+C or Cmd+C to copy the link."
+msgstr ""
+
+#: frontend/class-ushb-frontend.php:139
+msgid "Which Mastodon server are you on?"
+msgstr ""
+
+#: frontend/class-ushb-frontend.php:140
+msgid "Press Ctrl+D, or Cmd+D on a Mac, to bookmark this page."
+msgstr ""
+
+#: frontend/class-ushb-frontend.php:141
+msgid "Scan to open this page"
+msgstr ""
+
+#: frontend/class-ushb-frontend.php:142
+msgid "A QR code could not be generated for this address."
+msgstr ""
+
+#: frontend/class-ushb-frontend.php:143
+#: frontend/class-ushb-render.php:541
+msgid "Close"
+msgstr ""
+
+#: frontend/class-ushb-render.php:304
+msgid "Copy link to clipboard"
+msgstr ""
+
+#: frontend/class-ushb-render.php:306
+msgid "Print this page"
+msgstr ""
+
+#: frontend/class-ushb-render.php:308
+msgid "Show a QR code for this page"
+msgstr ""
+
+#: frontend/class-ushb-render.php:310
+msgid "Bookmark this page"
+msgstr ""
+
+#: frontend/class-ushb-render.php:312
+msgid "Open the device share sheet"
+msgstr ""
+
+#. translators: %s: name of a social network, for example Facebook.
+#: frontend/class-ushb-render.php:316
+#, php-format
+msgid "Share on %s"
+msgstr ""
+
+#: frontend/class-ushb-render.php:472
+msgid "shares"
+msgstr ""
+
+#: frontend/class-ushb-render.php:475
+#: includes/class-ushb-shortcodes.php:156
+msgid "Share this"
+msgstr ""
+
+#: frontend/class-ushb-render.php:537
+#: frontend/class-ushb-render.php:540
+msgid "Share this page"
+msgstr ""
+
+#: includes/class-ushb-ajax.php:49
+msgid "Invalid security token."
+msgstr ""
+
+#: includes/class-ushb-ajax.php:54
+msgid "Click recording is switched off."
+msgstr ""
+
+#: includes/class-ushb-ajax.php:59
+msgid "Too many requests."
+msgstr ""
+
+#: includes/class-ushb-ajax.php:69
+msgid "Unknown network."
+msgstr ""
+
+#: includes/class-ushb-ajax.php:76
+msgid "Could not record that share."
+msgstr ""
+
+#: includes/class-ushb-ajax.php:91
+msgid "Permission denied."
+msgstr ""
+
+#: includes/class-ushb-ajax.php:101
+msgid "Unknown notice."
+msgstr ""
+
+#: includes/class-ushb-blocks.php:61
+msgid "Share buttons for this post."
+msgstr ""
+
+#: includes/class-ushb-blocks.php:157
+msgid "Choose at least one network for these share buttons."
+msgstr ""
+
+#: includes/class-ushb-elementor-widget.php:100
+msgid "Share buttons"
+msgstr ""
+
+#: includes/class-ushb-elementor-widget.php:144
+#: assets/js/block.js:90
+msgid "Style"
+msgstr ""
+
+#: includes/class-ushb-elementor-widget.php:209
+msgid "Colours"
+msgstr ""
+
+#: includes/class-ushb-elementor-widget.php:214
+msgid "One custom colour"
+msgstr ""
+
+#: includes/class-ushb-elementor-widget.php:216
+msgid "Inherit from theme"
+msgstr ""
+
+#: includes/class-ushb-networks.php:44
+msgid "Facebook"
+msgstr ""
+
+#: includes/class-ushb-networks.php:52
+msgid "X"
+msgstr ""
+
+#: includes/class-ushb-networks.php:60
+msgid "LinkedIn"
+msgstr ""
+
+#: includes/class-ushb-networks.php:68
+msgid "Pinterest"
+msgstr ""
+
+#: includes/class-ushb-networks.php:76
+msgid "Reddit"
+msgstr ""
+
+#: includes/class-ushb-networks.php:84
+msgid "Bluesky"
+msgstr ""
+
+#: includes/class-ushb-networks.php:92
+msgid "Threads"
+msgstr ""
+
+#: includes/class-ushb-networks.php:100
+msgid "Mastodon"
+msgstr ""
+
+#: includes/class-ushb-networks.php:105
+msgid "Asks visitors which server they use, then remembers it in their own browser."
+msgstr ""
+
+#: includes/class-ushb-networks.php:108
+msgid "Tumblr"
+msgstr ""
+
+#: includes/class-ushb-networks.php:116
+msgid "VK"
+msgstr ""
+
+#: includes/class-ushb-networks.php:124
+msgid "OK.ru"
+msgstr ""
+
+#: includes/class-ushb-networks.php:132
+msgid "Xing"
+msgstr ""
+
+#: includes/class-ushb-networks.php:140
+msgid "Weibo"
+msgstr ""
+
+#: includes/class-ushb-networks.php:148
+msgid "QQ"
+msgstr ""
+
+#: includes/class-ushb-networks.php:156
+msgid "WeChat"
+msgstr ""
+
+#: includes/class-ushb-networks.php:161
+msgid "WeChat has no web share endpoint, so this shows a scannable QR code instead."
+msgstr ""
+
+#: includes/class-ushb-networks.php:164
+msgid "Snapchat"
+msgstr ""
+
+#: includes/class-ushb-networks.php:172
+msgid "Nextdoor"
+msgstr ""
+
+#: includes/class-ushb-networks.php:180
+msgid "MeWe"
+msgstr ""
+
+#: includes/class-ushb-networks.php:188
+msgid "Minds"
+msgstr ""
+
+#: includes/class-ushb-networks.php:196
+msgid "Diaspora"
+msgstr ""
+
+#: includes/class-ushb-networks.php:204
+msgid "LiveJournal"
+msgstr ""
+
+#: includes/class-ushb-networks.php:212
+msgid "Blogger"
+msgstr ""
+
+#: includes/class-ushb-networks.php:220
+msgid "Flipboard"
+msgstr ""
+
+#: includes/class-ushb-networks.php:228
+msgid "Hacker News"
+msgstr ""
+
+#: includes/class-ushb-networks.php:236
+msgid "Digg"
+msgstr ""
+
+#: includes/class-ushb-networks.php:246
+msgid "WhatsApp"
+msgstr ""
+
+#: includes/class-ushb-networks.php:254
+msgid "Telegram"
+msgstr ""
+
+#: includes/class-ushb-networks.php:262
+msgid "Messenger"
+msgstr ""
+
+#: includes/class-ushb-networks.php:268
+msgid "Needs a Facebook App ID, which you can set on the Content and meta tab."
+msgstr ""
+
+#: includes/class-ushb-networks.php:271
+msgid "Viber"
+msgstr ""
+
+#: includes/class-ushb-networks.php:278
+msgid "LINE"
+msgstr ""
+
+#: includes/class-ushb-networks.php:286
+msgid "Threema"
+msgstr ""
+
+#: includes/class-ushb-networks.php:293
+msgid "Text message"
+msgstr ""
+
+#: includes/class-ushb-networks.php:300
+msgid "Email"
+msgstr ""
+
+#: includes/class-ushb-networks.php:309
+msgid "Instapaper"
+msgstr ""
+
+#: includes/class-ushb-networks.php:317
+msgid "Evernote"
+msgstr ""
+
+#: includes/class-ushb-networks.php:325
+msgid "Trello"
+msgstr ""
+
+#: includes/class-ushb-networks.php:333
+msgid "Buffer"
+msgstr ""
+
+#: includes/class-ushb-networks.php:341
+msgid "Bookmark"
+msgstr ""
+
+#: includes/class-ushb-networks.php:346
+msgid "Shows visitors their browser bookmark shortcut."
+msgstr ""
+
+#: includes/class-ushb-networks.php:351
+msgid "ChatGPT"
+msgstr ""
+
+#: includes/class-ushb-networks.php:359
+msgid "Claude"
+msgstr ""
+
+#: includes/class-ushb-networks.php:367
+msgid "Gemini"
+msgstr ""
+
+#: includes/class-ushb-networks.php:375
+msgid "Perplexity"
+msgstr ""
+
+#: includes/class-ushb-networks.php:383
+msgid "Grok"
+msgstr ""
+
+#: includes/class-ushb-networks.php:391
+msgid "Google"
+msgstr ""
+
+#: includes/class-ushb-networks.php:401
+msgid "Copy link"
+msgstr ""
+
+#: includes/class-ushb-networks.php:413
+msgid "Opens the device share sheet. Hidden automatically where the browser does not support it."
+msgstr ""
+
+#: includes/class-ushb-networks.php:416
+msgid "QR code"
+msgstr ""
+
+#: includes/class-ushb-networks.php:423
+msgid "Print"
+msgstr ""
+
+#: includes/class-ushb-networks.php:465
+msgid "Social networks"
+msgstr ""
+
+#: includes/class-ushb-networks.php:466
+msgid "Messaging"
+msgstr ""
+
+#: includes/class-ushb-networks.php:467
+msgid "Read later and productivity"
+msgstr ""
+
+#: includes/class-ushb-networks.php:469
+msgid "On this device"
+msgstr ""
