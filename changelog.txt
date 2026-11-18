@@ -1,8 +1,16 @@
 Unstoppable Share Buttons - Changelog
 ====================================
 
-Unreleased
-----------
+1.2.0
+-----
+* Added: a retention policy for the click table. It gains a row per post,
+  network, placement and day and was never pruned. "Keep daily detail for N
+  months" on the Measurement tab merges anything older into a single row per
+  month, run by a daily WP-Cron event. Merged rather than deleted on purpose:
+  counts_for_post() and grand_total() sum the whole table with no date bound,
+  so pruning would make published share counts go down. Lifetime totals are
+  unchanged to the click. Default is 0, which keeps every day for ever, so no
+  existing install changes behaviour on upgrade.
 * Added: a "placement" attribute on [unstoppable_share]. Every shortcode bar
   previously reported as "shortcode", so a bar in the sidebar, one in the footer
   and one mid-content were indistinguishable on the Analytics screen. Give each
@@ -16,6 +24,9 @@ Unreleased
 * Fixed: a manual run of the deploy workflow would have written an SVN tag
   named after the branch ref rather than the version. Release-triggered
   deployments were never affected.
+* Changed: "Tested up to" has been removed from the main plugin header and
+  kept only in readme.txt, which is what Plugin Check now requires. Verified
+  against WordPress 7.1.4.
 
 1.1.0
 -----

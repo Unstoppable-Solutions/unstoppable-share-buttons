@@ -27,8 +27,43 @@ class USHB_Stats {
 	/**
 	 * Hooks cache invalidation.
 	 */
+	/**
+	 * The daily roll-up event.
+	 */
+	const ROLLUP_HOOK = 'ushb_rollup_clicks';
+
+	/**
+	 * Hooks cache invalidation and the roll-up event.
+	 */
 	public static function init() {
 		add_action( 'ushb_click_recorded', array( __CLASS__, 'clear_post_cache' ), 10, 1 );
+		add_action( self::ROLLUP_HOOK, array( __CLASS__, 'run_scheduled_rollup' ) );
+	}
+
+	/**
+	 * Books the daily roll-up if it is not already booked.
+	 *
+	 * Called on activation and on upgrade rather than only on activation, so
+	 * an install that updated straight past the activation hook still ends up
+	 * with the event scheduled.
+	 */
+	public static function schedule_rollup() {
+		if ( ! wp_next_scheduled( self::ROLLUP_HOOK ) ) {
+			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', self::ROLLUP_HOOK );
+		}
+	}
+
+	/**
+	 * Cancels the daily roll-up.
+	 */
+	public static function unschedule_rollup() {
+		$timestamp = wp_next_scheduled( self::ROLLUP_HOOK );
+
+		if ( $timestamp ) {
+			wp_unschedule_event( $timestamp, self::ROLLUP_HOOK );
+		}
+
+		wp_clear_scheduled_hook( self::ROLLUP_HOOK );
 	}
 
 	/**
@@ -320,6 +355,171 @@ class USHB_Stats {
 		set_transient( 'ushb_grand_total', $total, 5 * MINUTE_IN_SECONDS );
 
 		return $total;
+	}
+
+	/**
+	 * Number of rows currently held.
+	 *
+	 * @return int Row count.
+	 */
+	public static function row_count() {
+		global $wpdb;
+
+		$table = self::table();
+
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom analytics table with no core API. The table name comes from $wpdb->prefix plus a class constant and never from input; all user values use placeholders.
+		return (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
+		// phpcs:enable
+	}
+
+	/**
+	 * The scheduled roll-up. Hooked to the daily ushb_rollup_clicks event.
+	 */
+	public static function run_scheduled_rollup() {
+		self::roll_up();
+	}
+
+	/**
+	 * Merges day rows older than the retention window into one row per month.
+	 *
+	 * The table gains a row per post, network, placement and day, so a busy
+	 * site accumulates steadily. Old detail is merged rather than deleted,
+	 * because counts_for_post() and grand_total() sum the whole table with no
+	 * date bound -- deleting old rows would make published share counts go
+	 * down, which is worse than a large table. A month's rows collapse into a
+	 * single row dated the first of that month, so lifetime totals are
+	 * unchanged to the click.
+	 *
+	 * Idempotent: a second run over an already-merged month finds one row and
+	 * rewrites it with its own value.
+	 *
+	 * @param int|null $months     Months of daily detail to keep. Null reads
+	 *                             the setting. 0 disables the roll-up.
+	 * @param int      $max_months Most months to process in one run, so a long
+	 *                             backlog cannot stall a cron request. The
+	 *                             remainder is picked up on later runs.
+	 * @return int Rows removed.
+	 */
+	public static function roll_up( $months = null, $max_months = 12 ) {
+		global $wpdb;
+
+		if ( null === $months ) {
+			$months = (int) USHB_Settings::get( 'retain_months', 0 );
+		}
+
+		$months = (int) $months;
+
+		if ( $months < 1 ) {
+			return 0;
+		}
+
+		// Anything before the first day of the month $months back is merged,
+		// so the retained detail is always whole months.
+		$cutoff = gmdate( 'Y-m-01', strtotime( '-' . $months . ' months', strtotime( gmdate( 'Y-m-01' ) ) ) );
+		$table  = self::table();
+
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom analytics table with no core API. The table name comes from $wpdb->prefix plus a class constant and never from input; all user values use placeholders.
+		// Only months that still hold a day other than the first need work.
+		// Without that test, already-merged months match "older than the
+		// cutoff" for ever, fill the per-run budget doing nothing, and the
+		// months that do need merging are never reached -- which stops the
+		// roll-up dead on any site with more merged months than the budget.
+		// The unique key allows one row per post, network, placement and day,
+		// so a month holding only first-of-month rows is merged by definition.
+		$stale = $wpdb->get_col(
+			$wpdb->prepare(
+				"SELECT DISTINCT SUBSTR(day, 1, 7) AS ym FROM {$table}
+				WHERE day < %s AND SUBSTR(day, 9, 2) <> '01'
+				ORDER BY ym ASC LIMIT %d",
+				$cutoff,
+				$max_months
+			)
+		);
+
+		$removed = 0;
+
+		foreach ( $stale as $ym ) {
+			$start = $ym . '-01';
+			$end   = gmdate( 'Y-m-t', strtotime( $start ) );
+
+			$totals = $wpdb->get_results(
+				$wpdb->prepare(
+					"SELECT post_id, network, placement, SUM(clicks) AS clicks
+					FROM {$table} WHERE day >= %s AND day <= %s
+					GROUP BY post_id, network, placement",
+					$start,
+					$end
+				)
+			);
+
+			if ( empty( $totals ) ) {
+				continue;
+			}
+
+			$before = (int) $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT COUNT(*) FROM {$table} WHERE day >= %s AND day <= %s",
+					$start,
+					$end
+				)
+			);
+
+			// Delete then re-insert inside a transaction. The merged row is
+			// dated the first of the month, which is itself inside the range
+			// being replaced, so writing before deleting would double-count if
+			// the request died in between.
+			$wpdb->query( 'START TRANSACTION' );
+
+			$deleted = $wpdb->query(
+				$wpdb->prepare(
+					"DELETE FROM {$table} WHERE day >= %s AND day <= %s",
+					$start,
+					$end
+				)
+			);
+
+			if ( false === $deleted ) {
+				$wpdb->query( 'ROLLBACK' );
+				continue;
+			}
+
+			$ok = true;
+
+			foreach ( $totals as $row ) {
+				$written = $wpdb->query(
+					$wpdb->prepare(
+						"INSERT INTO {$table} (post_id, network, placement, day, clicks)
+						VALUES (%d, %s, %s, %s, %d)",
+						$row->post_id,
+						$row->network,
+						$row->placement,
+						$start,
+						$row->clicks
+					)
+				);
+
+				if ( false === $written ) {
+					$ok = false;
+					break;
+				}
+			}
+
+			if ( ! $ok ) {
+				$wpdb->query( 'ROLLBACK' );
+				continue;
+			}
+
+			$wpdb->query( 'COMMIT' );
+
+			$removed += max( 0, $before - count( $totals ) );
+		}
+		// phpcs:enable
+
+		if ( $removed > 0 ) {
+			delete_transient( 'ushb_grand_total' );
+		}
+
+		return $removed;
 	}
 
 	/**

@@ -60,7 +60,17 @@ _(none — this plugin passes Plugin Check cleanly without any ignores.)_
 
 - **GPL-2.0-or-later** on everything.
 - **One author** for Contributors: in `readme.txt`: `paramedic192` (Dave Stevens).
-- **Tested up to** is bumped as WordPress ships each new release. The header takes the **major version only** (`7.1`) — Plugin Check raises `invalid_tested_upto_minor` on a patch number such as `7.1.3`. Record the exact tested build in `changelog.txt`/`README.md` instead. Currently verified against 7.1.3.
+- **Tested up to** lives in `readme.txt` **only**. Plugin Check raises
+  `plugin_header_tested_up_to_not_allowed` if it also appears in the main
+  plugin PHP header, because the two can drift apart. This rule appeared
+  between Oct and Nov 2026 and turned CI red on a header that had passed for
+  months — if Plugin Check fails on something nobody touched, suspect a new
+  rule before suspecting the change in hand.
+- The `readme.txt` value takes the **major version only** (`7.1`) — Plugin
+  Check raises `invalid_tested_upto_minor` on a patch number such as `7.1.4`.
+  Record the exact tested build in `changelog.txt`/`README.md` instead.
+  Currently verified against 7.1.4. WordPress.org resolves the major to the
+  newest patch itself, so the listing shows `7.1.4` without being told to.
 - **Plugin Check CI config** (`.github/workflows/plugin-check.yml`) is standard across the org: `exclude-checks: late_escaping` + `exclude-files` lists the GitHub-only files (`.github`, `.distignore`, `.gitignore`, `.gitattributes`, `README.md`, `CLAUDE.md`, `SECURITY.md`, `CONTRIBUTING.md`, `CHANGELOG.md`).
 - **`.distignore`** keeps GitHub-only files out of the WP.org zip (CI, docs, this file).
 - **Prefer `phpcs:ignore` + inline rationale** over removing the ignored check from CI entirely — a specific ignore documents the decision at the call site; a check removal silently covers future code too.

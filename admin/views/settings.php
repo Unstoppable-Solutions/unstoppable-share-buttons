@@ -297,6 +297,19 @@ $ushb_tabs = USHB_Admin::tabs();
 						<h2><?php esc_html_e( 'Built-in analytics', 'unstoppable-share-buttons' ); ?></h2>
 						<?php
 						USHB_Admin::toggle( 'track_clicks', __( 'Record share clicks', 'unstoppable-share-buttons' ), __( 'Stores a per-day count of clicks by post and network on your own server. No IP address, browser or user ID is saved, and nothing is sent anywhere.', 'unstoppable-share-buttons' ) );
+
+						USHB_Admin::number(
+							'retain_months',
+							__( 'Keep daily detail for', 'unstoppable-share-buttons' ),
+							0,
+							120,
+							sprintf(
+								/* translators: %s: current number of rows in the click table. */
+								__( 'Older days are merged into one row per month, so your totals never change but the table stops growing. Zero keeps every day for ever. The table currently holds %s rows.', 'unstoppable-share-buttons' ),
+								number_format_i18n( USHB_Stats::row_count() )
+							),
+							__( 'months', 'unstoppable-share-buttons' )
+						);
 						?>
 						<p class="ushb-inline-link">
 							<a href="<?php echo esc_url( admin_url( 'admin.php?page=' . USHB_Admin::MENU_SLUG . '-analytics' ) ); ?>">

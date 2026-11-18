@@ -162,12 +162,35 @@ placement, aggregating repeat clicks within each. Plugin Check and PHPCS clean.
 
 ---
 
-### 2.5 Click-table retention policy
-**Description:** The `ushb_clicks` table grows one row per post × network × placement × day and is never pruned. A busy site with 6 networks across 3 placements adds ~18 rows per post per day.
-**Benefit:** Prevents slow unbounded growth on high-traffic sites. A "keep detail for N months, then roll up" setting would cap it.
-**Priority:** Medium · **Complexity:** Medium · **Milestone:** v1.2.0 · **Status:** Proposed · **Source:** Code Review
+### 2.5 Click-table retention policy — ✅ Completed (unreleased)
+**Description:** The `ushb_clicks` table grew one row per post × network × placement × day and was never pruned.
+**Benefit:** Caps growth on high-traffic sites without touching reported figures.
+**Priority:** Medium · **Complexity:** Medium · **Milestone:** v1.2.0 · **Status:** Completed on `main`, awaiting release · **Source:** Code Review
 
-Not urgent at current install counts, but cheaper to design now than to retrofit over a large table.
+`retain_months` on the Measurement tab, default **0** = keep every day for ever,
+so no existing install changes behaviour on upgrade. A daily `ushb_rollup_clicks`
+WP-Cron event merges months older than the window into one row per month.
+
+**Merged, never deleted.** `counts_for_post()` and `grand_total()` sum the whole
+table with no date bound, and they feed `[unstoppable_share_count]` and the
+count badges, so pruning old rows would make *published* share counts go down.
+Merging keeps lifetime totals identical to the click.
+
+Verified on WP 7.1.4 against 4,344 seeded rows spanning 18 months: totals held
+at 30,408 across every run while rows fell to 1,248; whole months outside the
+window collapsed to one dated row each and months inside kept full daily
+detail; re-running removed nothing; `retain_months = 0` was a no-op; the event
+is booked on activate, cleared on deactivate and re-booked on reactivate with
+data intact; out-of-range input clamped to 0 and 120; and saving the Measurement
+tab left every other tab's settings untouched. Plugin Check and PHPCS clean.
+
+> **One bug this caught, worth remembering:** the first implementation selected
+> the oldest stale months up to a per-run cap, but already-merged months keep
+> matching "older than the cutoff" for ever. They filled the budget doing
+> nothing, so months that genuinely needed merging were never reached — the
+> roll-up would have silently stopped working on any site with more merged
+> months than the cap. The candidate query now requires a day other than the
+> first. It passed review by inspection; only running it exposed this.
 
 ---
 
@@ -272,3 +295,4 @@ What has and has not been exercised against real software, so the next session d
 | Directory assets (banner, icon) | ✅ Present in SVN `assets/` and rendering on the live listing — confirmed against SVN and the page, not the info API, which reports null for both |
 | Deploy workflow | ✅ Fired for real on v1.1.0 — secrets resolve, SVN tag `1.1.0` created, assets correctly skipped |
 | `.pot` catalogue | ✅ Generated with WP-CLI 2.12.0 — 357 strings |
+| Click-table roll-up | ✅ Verified on WP 7.1.4 over 18 months of seeded data — totals preserved exactly, idempotent, cron lifecycle correct |

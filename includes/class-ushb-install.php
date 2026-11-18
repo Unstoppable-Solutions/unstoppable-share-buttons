@@ -30,6 +30,7 @@ class USHB_Install {
 		require_once USHB_PLUGIN_DIR . 'includes/class-ushb-stats.php';
 
 		USHB_Stats::install_table();
+		USHB_Stats::schedule_rollup();
 
 		if ( false === get_option( USHB_Settings::OPTION, false ) ) {
 			add_option( USHB_Settings::OPTION, USHB_Settings::defaults() );
@@ -50,6 +51,7 @@ class USHB_Install {
 	 */
 	public static function deactivate() {
 		delete_transient( 'ushb_flash_notices' );
+		USHB_Stats::unschedule_rollup();
 	}
 
 	/**
@@ -68,6 +70,7 @@ class USHB_Install {
 		}
 
 		USHB_Stats::install_table();
+		USHB_Stats::schedule_rollup();
 
 		update_option( self::VERSION_OPTION, USHB_VERSION );
 	}

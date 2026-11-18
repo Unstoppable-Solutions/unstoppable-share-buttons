@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Unstoppable Share Buttons 1.1.0\n"
+"Project-Id-Version: Unstoppable Share Buttons 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/unstoppable-share-buttons\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-23T14:16:50+00:00\n"
+"POT-Creation-Date: 2026-11-18T10:09:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: unstoppable-share-buttons\n"
@@ -302,26 +302,30 @@ msgid ", and "
 msgstr ""
 
 #: admin/class-ushb-admin.php:807
-msgid "A share bar. Accepts networks, shape, style, labels, align, size, palette, color, counts, heading and cta."
+msgid "A share bar. Accepts networks, placement, shape, style, labels, align, size, palette, color, counts, heading and cta."
 msgstr ""
 
 #: admin/class-ushb-admin.php:811
-msgid "One button that opens the share dialog."
+msgid "Name a bar so it reports separately on the Analytics screen and can be styled on its own with .ushb--footer. Use any label you like; several bars on one page each keep their own figures."
 msgstr ""
 
 #: admin/class-ushb-admin.php:815
-msgid "A pull quote people can post in one click."
+msgid "One button that opens the share dialog."
 msgstr ""
 
 #: admin/class-ushb-admin.php:819
-msgid "The ask an AI row."
+msgid "A pull quote people can post in one click."
 msgstr ""
 
 #: admin/class-ushb-admin.php:823
-msgid "The recorded share total for a post."
+msgid "The ask an AI row."
 msgstr ""
 
 #: admin/class-ushb-admin.php:827
+msgid "The recorded share total for a post."
+msgstr ""
+
+#: admin/class-ushb-admin.php:831
 msgid "Template tag for theme files. Takes the same arguments."
 msgstr ""
 
@@ -924,199 +928,213 @@ msgid "Stores a per-day count of clicks by post and network on your own server. 
 msgstr ""
 
 #: admin/views/settings.php:303
+msgid "Keep daily detail for"
+msgstr ""
+
+#. translators: %s: current number of rows in the click table.
+#: admin/views/settings.php:308
+#, php-format
+msgid "Older days are merged into one row per month, so your totals never change but the table stops growing. Zero keeps every day for ever. The table currently holds %s rows."
+msgstr ""
+
+#: admin/views/settings.php:311
+msgid "months"
+msgstr ""
+
+#: admin/views/settings.php:316
 msgid "Open the analytics screen"
 msgstr ""
 
-#: admin/views/settings.php:309
+#: admin/views/settings.php:322
 msgid "Send events elsewhere"
 msgstr ""
 
-#: admin/views/settings.php:310
+#: admin/views/settings.php:323
 msgid "These fire through scripts your site already loads. This plugin never loads a tracker for you."
 msgstr ""
 
-#: admin/views/settings.php:312
+#: admin/views/settings.php:325
 msgid "Google Analytics 4"
 msgstr ""
 
-#: admin/views/settings.php:312
+#: admin/views/settings.php:325
 msgid "Fires the standard <code>share</code> event through an existing <code>gtag</code>."
 msgstr ""
 
-#: admin/views/settings.php:313
+#: admin/views/settings.php:326
 msgid "Meta Pixel"
 msgstr ""
 
-#: admin/views/settings.php:313
+#: admin/views/settings.php:326
 msgid "Fires a <code>Share</code> custom event through an existing <code>fbq</code>."
 msgstr ""
 
-#: admin/views/settings.php:314
+#: admin/views/settings.php:327
 msgid "Google Tag Manager dataLayer"
 msgstr ""
 
-#: admin/views/settings.php:314
+#: admin/views/settings.php:327
 msgid "Pushes an <code>unstoppable_share</code> event with the network, placement and post ID."
 msgstr ""
 
-#: admin/views/settings.php:319
+#: admin/views/settings.php:332
 msgid "Campaign tagging"
 msgstr ""
 
-#: admin/views/settings.php:320
+#: admin/views/settings.php:333
 msgid "Adds UTM parameters to the link people share, so returning traffic is attributable."
 msgstr ""
 
-#: admin/views/settings.php:322
+#: admin/views/settings.php:335
 msgid "Add UTM parameters"
 msgstr ""
 
-#: admin/views/settings.php:323
+#: admin/views/settings.php:336
 msgid "Source"
 msgstr ""
 
-#: admin/views/settings.php:323
+#: admin/views/settings.php:336
 msgid "Placeholders: <code>{network}</code>, <code>{sitename}</code>, <code>{title}</code>, <code>{post_id}</code>."
 msgstr ""
 
-#: admin/views/settings.php:324
+#: admin/views/settings.php:337
 msgid "Medium"
 msgstr ""
 
-#: admin/views/settings.php:325
+#: admin/views/settings.php:338
 msgid "Campaign"
 msgstr ""
 
-#: admin/views/settings.php:326
+#: admin/views/settings.php:339
 #: assets/js/block.js:66
 msgid "Content"
 msgstr ""
 
-#: admin/views/settings.php:327
+#: admin/views/settings.php:340
 msgid "Term"
 msgstr ""
 
-#: admin/views/settings.php:334
+#: admin/views/settings.php:347
 msgid "Network settings"
 msgstr ""
 
-#: admin/views/settings.php:336
+#: admin/views/settings.php:349
 msgid "X username"
 msgstr ""
 
-#: admin/views/settings.php:336
+#: admin/views/settings.php:349
 msgid "Added as <code>via</code> on shares to X. No @ needed."
 msgstr ""
 
-#: admin/views/settings.php:337
+#: admin/views/settings.php:350
 msgid "Default hashtags"
 msgstr ""
 
-#: admin/views/settings.php:337
+#: admin/views/settings.php:350
 msgid "Comma separated. The # is added for you."
 msgstr ""
 
-#: admin/views/settings.php:338
+#: admin/views/settings.php:351
 msgid "Facebook App ID"
 msgstr ""
 
-#: admin/views/settings.php:338
+#: admin/views/settings.php:351
 msgid "Required by the Messenger button and used for the <code>fb:app_id</code> tag."
 msgstr ""
 
-#: admin/views/settings.php:339
+#: admin/views/settings.php:352
 msgid "Copy confirmation text"
 msgstr ""
 
-#: admin/views/settings.php:339
+#: admin/views/settings.php:352
 #: frontend/class-ushb-frontend.php:137
 msgid "Link copied"
 msgstr ""
 
-#: admin/views/settings.php:344
+#: admin/views/settings.php:357
 #: includes/class-ushb-networks.php:468
 msgid "Ask an AI"
 msgstr ""
 
-#: admin/views/settings.php:345
+#: admin/views/settings.php:358
 msgid "The AI buttons open an assistant with a prompt already written. Place them with the [unstoppable_share_ai] shortcode."
 msgstr ""
 
-#: admin/views/settings.php:346
+#: admin/views/settings.php:359
 msgid "Prompt"
 msgstr ""
 
-#: admin/views/settings.php:346
+#: admin/views/settings.php:359
 msgid "Placeholders: <code>{url}</code>, <code>{title}</code>, <code>{sitename}</code>."
 msgstr ""
 
-#: admin/views/settings.php:350
+#: admin/views/settings.php:363
 msgid "Link previews"
 msgstr ""
 
 #. translators: %s: name of the active SEO plugin.
-#: admin/views/settings.php:357
+#: admin/views/settings.php:370
 #, php-format
 msgid "%s is already writing Open Graph tags, so this stays switched off. Two sets of tags confuse the scrapers they exist for."
 msgstr ""
 
-#: admin/views/settings.php:362
+#: admin/views/settings.php:375
 msgid "Output Open Graph and X card tags"
 msgstr ""
 
-#: admin/views/settings.php:365
+#: admin/views/settings.php:378
 msgid "Card size"
 msgstr ""
 
-#: admin/views/settings.php:367
+#: admin/views/settings.php:380
 msgid "Small"
 msgstr ""
 
-#: admin/views/settings.php:368
+#: admin/views/settings.php:381
 msgid "Large image"
 msgstr ""
 
-#: admin/views/settings.php:371
+#: admin/views/settings.php:384
 msgid "Fallback image URL"
 msgstr ""
 
-#: admin/views/settings.php:371
+#: admin/views/settings.php:384
 msgid "Used when a post has no featured image. Also used as the Pinterest image."
 msgstr ""
 
-#: admin/views/settings.php:376
+#: admin/views/settings.php:389
 msgid "Shortcodes and template tags"
 msgstr ""
 
-#: admin/views/settings.php:385
+#: admin/views/settings.php:398
 msgid "Save changes"
 msgstr ""
 
-#: admin/views/settings.php:391
+#: admin/views/settings.php:404
 msgid "Preview"
 msgstr ""
 
-#: admin/views/settings.php:405
+#: admin/views/settings.php:418
 msgid "Shape, fill, size and colour update as you change them. Save to apply."
 msgstr ""
 
-#: admin/views/settings.php:409
+#: admin/views/settings.php:422
 msgid "Worth knowing"
 msgstr ""
 
-#: admin/views/settings.php:411
+#: admin/views/settings.php:424
 msgid "Four to six networks beats twenty. Every extra button costs attention."
 msgstr ""
 
-#: admin/views/settings.php:412
+#: admin/views/settings.php:425
 msgid "Put the inline bar below the post. People share after they read."
 msgstr ""
 
-#: admin/views/settings.php:413
+#: admin/views/settings.php:426
 msgid "On phones the device share sheet beats individual network buttons."
 msgstr ""
 
-#: admin/views/settings.php:414
+#: admin/views/settings.php:427
 msgid "Hide the share count until it is a number worth showing."
 msgstr ""
 
@@ -1255,7 +1273,7 @@ msgid "shares"
 msgstr ""
 
 #: frontend/class-ushb-render.php:475
-#: includes/class-ushb-shortcodes.php:156
+#: includes/class-ushb-shortcodes.php:178
 msgid "Share this"
 msgstr ""
 

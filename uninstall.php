@@ -16,6 +16,11 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
+// The daily roll-up event goes whether or not data is being removed: the code
+// that answers it is about to stop existing, and a scheduled hook nothing
+// listens to would be left behind in cron for ever.
+wp_clear_scheduled_hook( 'ushb_rollup_clicks' );
+
 $ushb_settings = get_option( 'ushb_settings', array() );
 
 if ( empty( $ushb_settings['delete_data_on_uninstall'] ) ) {

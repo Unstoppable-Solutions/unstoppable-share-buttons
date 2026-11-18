@@ -90,6 +90,10 @@ class USHB_Settings {
 
 			// Measurement. Off by default, per the privacy rules.
 			'track_clicks'             => 0,
+			// 0 keeps every day row for ever, which is the behaviour every
+			// existing install already has. Changing this default would
+			// silently reshape stored data on upgrade.
+			'retain_months'            => 0,
 			'ga4_enabled'              => 0,
 			'meta_pixel_enabled'       => 0,
 			'datalayer_enabled'        => 0,
@@ -275,6 +279,7 @@ class USHB_Settings {
 			'gap'                => array( 0, 40 ),
 			'radius'             => array( 0, 50 ),
 			'count_threshold'    => array( 0, 100000 ),
+			'retain_months'      => array( 0, 120 ),
 		);
 
 		foreach ( $ints as $key => $range ) {

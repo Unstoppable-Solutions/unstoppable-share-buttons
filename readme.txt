@@ -4,7 +4,7 @@ Donate link: https://unstoppablesolutions.app/donate
 Tags: social sharing, share buttons, social media, woocommerce, analytics
 Requires at least: 5.8
 Tested up to: 7.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -132,6 +132,24 @@ You can clear all recorded history at any time from Unstoppable Share → Tools,
 
 == Changelog ==
 
+= 1.2.0 =
+* Added: a retention setting for the click history. The table gains a row per
+  post, network, placement and day and was never pruned, so it grew for ever on
+  a busy site. Set "Keep daily detail for" on the Measurement tab and anything
+  older is merged into one row per month. Your totals do not change by a single
+  click - old days are combined, never deleted - and the setting is zero by
+  default, so nothing happens unless you ask for it.
+* Added: a "placement" attribute on [unstoppable_share]. Every shortcode bar
+  previously reported as "shortcode", so a bar in the sidebar, one in the footer
+  and one mid-content were indistinguishable on the Analytics screen. Give each
+  one a name - [unstoppable_share placement="footer"] - and it reports under
+  that name and gains a .ushb--footer class to style on its own. Existing
+  shortcodes are unaffected.
+* Added: a translation catalogue. The plugin has 357 translatable strings and
+  shipped without a .pot file for translators to work from.
+* Changed: verified against WordPress 7.1.4. "Tested up to" now appears only in
+  this readme, not in the plugin header, which is what WordPress.org asks for.
+
 = 1.1.0 =
 * Fixed: "Delete settings and share history on uninstall" did nothing. The
   setting on the Tools screen saved correctly, but the plugin had no uninstall
@@ -217,6 +235,12 @@ You can clear all recorded history at any time from Unstoppable Share → Tools,
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+Adds an optional limit on how long daily click detail is kept. It is off by
+default and changes nothing until you set it. When you do, old days are merged
+into monthly rows rather than deleted, so your share totals stay exactly the
+same.
 
 = 1.1.0 =
 Fixes the "delete data on uninstall" setting, which previously did nothing.
